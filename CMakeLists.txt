@@ -10,10 +10,13 @@ include(CTest)
 
 add_library(rvsim
     src/isa/addi.cc
+    src/isa/andi.cc
     src/isa/instruction.cc
     src/isa/instruction_type_i.cc
+    src/isa/ori.cc
     src/isa/slti.cc
     src/isa/sltiu.cc
+    src/isa/xori.cc
 )
 
 target_include_directories(rvsim

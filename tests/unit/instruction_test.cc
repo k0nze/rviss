@@ -28,3 +28,30 @@ TEST_CASE("SLTIU stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::a5);
     REQUIRE(instruction.imm == 789);
 }
+
+TEST_CASE("ANDI stores opcode and operands") {
+    ANDI instruction(Register::a6, Register::a7, 321);
+
+    REQUIRE(instruction.opcode == Opcode::ANDI);
+    REQUIRE(instruction.rd == Register::a6);
+    REQUIRE(instruction.rs1 == Register::a7);
+    REQUIRE(instruction.imm == 321);
+}
+
+TEST_CASE("ORI stores opcode and operands") {
+    ORI instruction(Register::s0, Register::s1, 654);
+
+    REQUIRE(instruction.opcode == Opcode::ORI);
+    REQUIRE(instruction.rd == Register::s0);
+    REQUIRE(instruction.rs1 == Register::s1);
+    REQUIRE(instruction.imm == 654);
+}
+
+TEST_CASE("XORI stores opcode and operands") {
+    XORI instruction(Register::s2, Register::s3, 987);
+
+    REQUIRE(instruction.opcode == Opcode::XORI);
+    REQUIRE(instruction.rd == Register::s2);
+    REQUIRE(instruction.rs1 == Register::s3);
+    REQUIRE(instruction.imm == 987);
+}
