@@ -21,6 +21,8 @@ add_library(rviss
     src/isa/csrrsi.cc
     src/isa/csrrwi.cc
     src/isa/csrrw.cc
+    src/isa/div.cc
+    src/isa/divu.cc
     src/isa/ecall.cc
     src/isa/ebreak.cc
     src/isa/fence.cc
@@ -38,7 +40,13 @@ add_library(rviss
     src/isa/lw.cc
     src/isa/lwu.cc
     src/isa/mret.cc
+    src/isa/mul.cc
+    src/isa/mulh.cc
+    src/isa/mulhsu.cc
+    src/isa/mulhu.cc
     src/isa/ori.cc
+    src/isa/rem.cc
+    src/isa/remu.cc
     src/isa/or.cc
     src/isa/sfence_vma.cc
     src/isa/sll.cc
