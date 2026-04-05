@@ -50,6 +50,7 @@ add_library(rviss
     src/isa/instruction.cc
     src/isa/instruction_type_i.cc
     src/isa/instruction_type_r.cc
+    src/isa/instruction_type_u.cc
     src/isa/jalr.cc
     src/isa/lb.cc
     src/isa/lbu.cc

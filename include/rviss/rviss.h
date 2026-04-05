@@ -42,6 +42,7 @@
 #include "rviss/isa/instruction.h"
 #include "rviss/isa/instruction_type_i.h"
 #include "rviss/isa/instruction_type_r.h"
+#include "rviss/isa/instruction_type_u.h"
 #include "rviss/isa/jalr.h"
 #include "rviss/isa/lb.h"
 #include "rviss/isa/lbu.h"

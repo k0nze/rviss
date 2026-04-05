@@ -10,6 +10,16 @@ TEST_CASE("LUI stores opcode and operands") {
     REQUIRE(instruction.imm == 1024);
 }
 
+TEST_CASE("InstructionTypeU-derived instructions store destination and immediate") {
+    LUI instruction(Register::a0, 2048);
+
+    const InstructionTypeU& base = instruction;
+
+    REQUIRE(base.opcode == Opcode::LUI);
+    REQUIRE(base.rd == Register::a0);
+    REQUIRE(base.imm == 2048);
+}
+
 TEST_CASE("ADDI stores opcode and operands") {
     ADDI instruction(Register::a0, Register::a1, 123);
 
