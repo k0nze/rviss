@@ -12,6 +12,7 @@
 #include "rviss/isa/lhu.h"
 #include "rviss/isa/lui.h"
 #include "rviss/isa/lw.h"
+#include "rviss/isa/lwu.h"
 #include "rviss/isa/opcode.h"
 #include "rviss/isa/ori.h"
 #include "rviss/isa/register.h"
