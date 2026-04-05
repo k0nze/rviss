@@ -6,7 +6,7 @@
 
 class ORI : public InstructionTypeI {
 public:
-    ORI(Register rd, Register rs, uint32_t imm);
+    ORI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

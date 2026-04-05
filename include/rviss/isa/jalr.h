@@ -6,7 +6,7 @@
 
 class JALR : public InstructionTypeI {
 public:
-    JALR(Register rd, Register rs, uint32_t imm);
+    JALR(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

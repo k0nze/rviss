@@ -6,7 +6,7 @@
 
 class CSRRC : public InstructionTypeI {
 public:
-    CSRRC(Register rd, Register rs, uint32_t imm);
+    CSRRC(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

@@ -6,7 +6,7 @@
 
 class LBU : public InstructionTypeI {
 public:
-    LBU(Register rd, Register rs, uint32_t imm);
+    LBU(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

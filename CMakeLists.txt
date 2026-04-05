@@ -127,7 +127,9 @@ if(BUILD_TESTING)
     list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
     add_executable(rviss_tests
-        tests/unit/instruction_test.cc
+        tests/unit/instruction_type_i_test.cc
+        tests/unit/instruction_type_r_test.cc
+        tests/unit/instruction_type_u_test.cc
         tests/unit/register_test.cc
     )
 

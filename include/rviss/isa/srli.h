@@ -6,7 +6,7 @@
 
 class SRLI : public InstructionTypeI {
 public:
-    SRLI(Register rd, Register rs, uint32_t imm);
+    SRLI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

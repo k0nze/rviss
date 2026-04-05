@@ -6,7 +6,7 @@
 
 class FENCE : public InstructionTypeI {
 public:
-    explicit FENCE(uint32_t imm);
+    explicit FENCE(uint16_t imm);
 };
 
 #endif

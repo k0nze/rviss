@@ -6,7 +6,7 @@
 
 class SRAIW : public InstructionTypeI {
 public:
-    SRAIW(Register rd, Register rs, uint32_t imm);
+    SRAIW(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

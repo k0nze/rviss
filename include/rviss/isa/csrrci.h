@@ -6,7 +6,7 @@
 
 class CSRRCI : public InstructionTypeI {
 public:
-    CSRRCI(Register rd, Register rs, uint32_t imm);
+    CSRRCI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

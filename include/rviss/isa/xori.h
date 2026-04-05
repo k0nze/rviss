@@ -6,7 +6,7 @@
 
 class XORI : public InstructionTypeI {
 public:
-    XORI(Register rd, Register rs, uint32_t imm);
+    XORI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

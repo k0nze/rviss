@@ -6,7 +6,7 @@
 
 class ANDI : public InstructionTypeI {
 public:
-    ANDI(Register rd, Register rs, uint32_t imm);
+    ANDI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

@@ -6,7 +6,7 @@
 
 class SLTIU : public InstructionTypeI {
 public:
-    SLTIU(Register rd, Register rs, uint32_t imm);
+    SLTIU(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

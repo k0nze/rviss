@@ -6,7 +6,7 @@
 
 class LH : public InstructionTypeI {
 public:
-    LH(Register rd, Register rs, uint32_t imm);
+    LH(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

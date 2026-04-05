@@ -6,7 +6,7 @@
 
 class SLTI : public InstructionTypeI {
 public:
-    SLTI(Register rd, Register rs, uint32_t imm);
+    SLTI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

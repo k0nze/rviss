@@ -6,7 +6,7 @@
 
 class SRAI : public InstructionTypeI {
 public:
-    SRAI(Register rd, Register rs, uint32_t imm);
+    SRAI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

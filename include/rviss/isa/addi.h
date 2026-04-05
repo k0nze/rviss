@@ -6,7 +6,7 @@
 
 class ADDI : public InstructionTypeI {
 public:
-    ADDI(Register rd, Register rs, uint32_t imm);
+    ADDI(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

@@ -11,10 +11,10 @@ public:
     virtual ~InstructionTypeI() = 0;
     Register rd;
     Register rs1;
-    uint32_t imm;
+    uint16_t imm;
 
 protected:
-    InstructionTypeI(Opcode opcode, Register rd, Register rs1, uint32_t imm);
+    InstructionTypeI(Opcode opcode, Register rd, Register rs1, uint16_t imm);
 };
 
 #endif

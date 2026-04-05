@@ -6,7 +6,7 @@
 
 class ADDIW : public InstructionTypeI {
 public:
-    ADDIW(Register rd, Register rs, uint32_t imm);
+    ADDIW(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

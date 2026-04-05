@@ -6,7 +6,7 @@
 
 class SLLIW : public InstructionTypeI {
 public:
-    SLLIW(Register rd, Register rs, uint32_t imm);
+    SLLIW(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

@@ -6,7 +6,7 @@
 
 class SRLIW : public InstructionTypeI {
 public:
-    SRLIW(Register rd, Register rs, uint32_t imm);
+    SRLIW(Register rd, Register rs, uint16_t imm);
 };
 
 #endif

@@ -1,4 +1,4 @@
 #include "rviss/isa/ori.h"
 
-ORI::ORI(Register rd, Register rs1, uint32_t imm)
+ORI::ORI(Register rd, Register rs1, uint16_t imm)
     : InstructionTypeI(Opcode::ORI, rd, rs1, imm) {}
