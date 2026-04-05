@@ -11,6 +11,7 @@ include(CTest)
 add_library(rviss
     src/isa/addi.cc
     src/isa/andi.cc
+    src/isa/csrrw.cc
     src/isa/ecall.cc
     src/isa/ebreak.cc
     src/isa/instruction.cc

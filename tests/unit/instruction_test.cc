@@ -171,3 +171,12 @@ TEST_CASE("EBREAK stores opcode") {
     REQUIRE(instruction.rs1 == Register::zero);
     REQUIRE(instruction.imm == 0);
 }
+
+TEST_CASE("CSRRW stores opcode and operands") {
+    CSRRW instruction(Register::a0, Register::a1, 3072);
+
+    REQUIRE(instruction.opcode == Opcode::CSRRW);
+    REQUIRE(instruction.rd == Register::a0);
+    REQUIRE(instruction.rs1 == Register::a1);
+    REQUIRE(instruction.imm == 3072);
+}
