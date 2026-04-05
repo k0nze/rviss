@@ -10,6 +10,7 @@ include(CTest)
 
 add_library(rviss
     src/isa/add.cc
+    src/isa/addw.cc
     src/isa/addiw.cc
     src/isa/addi.cc
     src/isa/and.cc
@@ -41,18 +42,22 @@ add_library(rviss
     src/isa/or.cc
     src/isa/sfence_vma.cc
     src/isa/sll.cc
+    src/isa/sllw.cc
     src/isa/slli.cc
     src/isa/slliw.cc
     src/isa/slt.cc
     src/isa/srai.cc
     src/isa/sltu.cc
     src/isa/sra.cc
+    src/isa/sraw.cc
     src/isa/sraiw.cc
     src/isa/sret.cc
     src/isa/slti.cc
     src/isa/sltiu.cc
     src/isa/sub.cc
+    src/isa/subw.cc
     src/isa/srl.cc
+    src/isa/srlw.cc
     src/isa/srli.cc
     src/isa/srliw.cc
     src/isa/uret.cc
