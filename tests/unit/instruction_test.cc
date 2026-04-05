@@ -135,3 +135,12 @@ TEST_CASE("LBU stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::a1);
     REQUIRE(instruction.imm == 64);
 }
+
+TEST_CASE("LHU stores opcode and operands") {
+    LHU instruction(Register::a2, Register::a3, 96);
+
+    REQUIRE(instruction.opcode == Opcode::LHU);
+    REQUIRE(instruction.rd == Register::a2);
+    REQUIRE(instruction.rs1 == Register::a3);
+    REQUIRE(instruction.imm == 96);
+}

@@ -9,6 +9,7 @@
 #include "rviss/isa/lbu.h"
 #include "rviss/isa/ld.h"
 #include "rviss/isa/lh.h"
+#include "rviss/isa/lhu.h"
 #include "rviss/isa/lui.h"
 #include "rviss/isa/lw.h"
 #include "rviss/isa/opcode.h"
