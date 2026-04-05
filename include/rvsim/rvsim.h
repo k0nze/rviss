@@ -8,6 +8,7 @@
 #include "rvsim/isa/opcode.h"
 #include "rvsim/isa/ori.h"
 #include "rvsim/isa/register.h"
+#include "rvsim/isa/slli.h"
 #include "rvsim/isa/slti.h"
 #include "rvsim/isa/sltiu.h"
 #include "rvsim/isa/xori.h"

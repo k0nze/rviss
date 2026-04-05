@@ -55,3 +55,12 @@ TEST_CASE("XORI stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::s3);
     REQUIRE(instruction.imm == 987);
 }
+
+TEST_CASE("SLLI stores opcode and operands") {
+    SLLI instruction(Register::s4, Register::s5, 5);
+
+    REQUIRE(instruction.opcode == Opcode::SLLI);
+    REQUIRE(instruction.rd == Register::s4);
+    REQUIRE(instruction.rs1 == Register::s5);
+    REQUIRE(instruction.imm == 5);
+}
