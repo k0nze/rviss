@@ -17,6 +17,7 @@ add_library(rvsim
     src/isa/slli.cc
     src/isa/slti.cc
     src/isa/sltiu.cc
+    src/isa/srli.cc
     src/isa/xori.cc
 )
 
