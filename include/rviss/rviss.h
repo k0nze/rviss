@@ -8,6 +8,7 @@
 #include "rviss/isa/lb.h"
 #include "rviss/isa/lh.h"
 #include "rviss/isa/lui.h"
+#include "rviss/isa/lw.h"
 #include "rviss/isa/opcode.h"
 #include "rviss/isa/ori.h"
 #include "rviss/isa/register.h"
