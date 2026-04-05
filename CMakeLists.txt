@@ -13,6 +13,7 @@ add_library(rviss
     src/isa/andi.cc
     src/isa/instruction.cc
     src/isa/instruction_type_i.cc
+    src/isa/lb.cc
     src/isa/lui.cc
     src/isa/ori.cc
     src/isa/slli.cc
