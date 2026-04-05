@@ -15,6 +15,7 @@ add_library(rvsim
     src/isa/instruction_type_i.cc
     src/isa/ori.cc
     src/isa/slli.cc
+    src/isa/srai.cc
     src/isa/slti.cc
     src/isa/sltiu.cc
     src/isa/srli.cc
