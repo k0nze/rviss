@@ -32,6 +32,7 @@ add_library(rviss
     src/isa/lwu.cc
     src/isa/ori.cc
     src/isa/slli.cc
+    src/isa/slliw.cc
     src/isa/srai.cc
     src/isa/slti.cc
     src/isa/sltiu.cc

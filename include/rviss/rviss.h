@@ -26,6 +26,7 @@
 #include "rviss/isa/ori.h"
 #include "rviss/isa/register.h"
 #include "rviss/isa/slli.h"
+#include "rviss/isa/slliw.h"
 #include "rviss/isa/srai.h"
 #include "rviss/isa/slti.h"
 #include "rviss/isa/sltiu.h"
