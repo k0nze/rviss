@@ -1,5 +1,5 @@
-#ifndef RVSIM_ISA_REGISTER_H
-#define RVSIM_ISA_REGISTER_H
+#ifndef RVISS_ISA_REGISTER_H
+#define RVISS_ISA_REGISTER_H
 
 enum class Register {
     x0 = 0,

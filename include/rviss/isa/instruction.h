@@ -1,7 +1,7 @@
-#ifndef RVSIM_ISA_INSTRUCTION_H
-#define RVSIM_ISA_INSTRUCTION_H
+#ifndef RVISS_ISA_INSTRUCTION_H
+#define RVISS_ISA_INSTRUCTION_H
 
-#include "rvsim/isa/opcode.h"
+#include "rviss/isa/opcode.h"
 
 class Instruction {
 public:

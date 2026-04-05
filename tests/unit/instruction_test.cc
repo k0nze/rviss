@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "rvsim/rvsim.h"
+#include "rviss/rviss.h"
 
 TEST_CASE("ADDI stores opcode and operands") {
     ADDI instruction(Register::a0, Register::a1, 123);

@@ -1,8 +1,8 @@
-#ifndef RVSIM_ISA_LUI_H
-#define RVSIM_ISA_LUI_H
+#ifndef RVISS_ISA_LUI_H
+#define RVISS_ISA_LUI_H
 
-#include "rvsim/isa/instruction.h"
-#include "rvsim/isa/register.h"
+#include "rviss/isa/instruction.h"
+#include "rviss/isa/register.h"
 #include <cstdint>
 
 class LUI : public Instruction {

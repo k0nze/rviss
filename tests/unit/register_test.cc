@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "rvsim/rvsim.h"
+#include "rviss/rviss.h"
 
 TEST_CASE("Canonical registers map to register numbers 0 through 31") {
     REQUIRE(static_cast<int>(Register::x0) == 0);

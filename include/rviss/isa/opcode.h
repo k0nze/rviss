@@ -1,5 +1,5 @@
-#ifndef RVSIM_ISA_OPCODE_H
-#define RVSIM_ISA_OPCODE_H
+#ifndef RVISS_ISA_OPCODE_H
+#define RVISS_ISA_OPCODE_H
 
 enum class Opcode {
     LUI, AUIPC, ADDI, SLTI, SLTIU, XORI,

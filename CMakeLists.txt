@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(rvsim LANGUAGES CXX)
+project(rviss LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -8,7 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(CTest)
 
-add_library(rvsim
+add_library(rviss
     src/isa/addi.cc
     src/isa/andi.cc
     src/isa/instruction.cc
@@ -23,7 +23,7 @@ add_library(rvsim
     src/isa/xori.cc
 )
 
-target_include_directories(rvsim
+target_include_directories(rviss
     PUBLIC ${PROJECT_SOURCE_DIR}/include
 )
 
@@ -32,7 +32,7 @@ add_executable(main
 )
 
 target_link_libraries(main
-    PRIVATE rvsim
+    PRIVATE rviss
 )
 
 if(BUILD_TESTING)
@@ -47,17 +47,17 @@ if(BUILD_TESTING)
 
     list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
-    add_executable(rvsim_tests
+    add_executable(rviss_tests
         tests/unit/instruction_test.cc
         tests/unit/register_test.cc
     )
 
-    target_link_libraries(rvsim_tests
+    target_link_libraries(rviss_tests
         PRIVATE
-        rvsim
+        rviss
         Catch2::Catch2WithMain
     )
 
     include(Catch)
-    catch_discover_tests(rvsim_tests)
+    catch_discover_tests(rviss_tests)
 endif()

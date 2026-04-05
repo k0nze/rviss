@@ -1,4 +1,4 @@
-#include "rvsim/isa/instruction.h"
+#include "rviss/isa/instruction.h"
 
 Instruction::Instruction(Opcode opcode) : opcode(opcode) {}
 

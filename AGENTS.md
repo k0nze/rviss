@@ -1,4 +1,4 @@
-# RVSIM
+# RVISS
 
 ## Project Scope
 
@@ -8,9 +8,9 @@ This project is intended to build a purely functional RISC-V instruction set sim
 
 * `src` contains the implementation
 * `include` contains the public headers
-* `include/rvsim` contains the public library interface
-* `include/rvsim/rvsim.h` is the umbrella header intended for apps
-* `include/rvsim/isa` contains ISA-related public headers
+* `include/rviss` contains the public library interface
+* `include/rviss/rviss.h` is the umbrella header intended for apps
+* `include/rviss/isa` contains ISA-related public headers
 * `tests` contains the tests
 * `tests/unit` contains Catch2-based unit tests
 * `apps` contains examples of how to use the instruction set simulator

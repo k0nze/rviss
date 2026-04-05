@@ -1,7 +1,7 @@
-#ifndef RVSIM_ISA_ORI_H
-#define RVSIM_ISA_ORI_H
+#ifndef RVISS_ISA_ORI_H
+#define RVISS_ISA_ORI_H
 
-#include "rvsim/isa/instruction_type_i.h"
+#include "rviss/isa/instruction_type_i.h"
 #include <cstdint>
 
 class ORI : public InstructionTypeI {

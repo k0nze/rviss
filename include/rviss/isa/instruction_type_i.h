@@ -1,9 +1,9 @@
-#ifndef RVSIM_ISA_INSTRUCTION_TYPE_I_H
-#define RVSIM_ISA_INSTRUCTION_TYPE_I_H
+#ifndef RVISS_ISA_INSTRUCTION_TYPE_I_H
+#define RVISS_ISA_INSTRUCTION_TYPE_I_H
 
-#include "rvsim/isa/instruction.h"
-#include "rvsim/isa/opcode.h"
-#include "rvsim/isa/register.h"
+#include "rviss/isa/instruction.h"
+#include "rviss/isa/opcode.h"
+#include "rviss/isa/register.h"
 #include <cstdint>
 
 class InstructionTypeI: public Instruction {

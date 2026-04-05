@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "rvsim/rvsim.h"
+#include "rviss/rviss.h"
 
 int main() {
     ADDI instruction(Register::a0, Register::a1, 123);
