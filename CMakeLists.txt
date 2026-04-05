@@ -13,6 +13,15 @@ add_library(rviss
     src/isa/addw.cc
     src/isa/addiw.cc
     src/isa/addi.cc
+    src/isa/amoadd_w.cc
+    src/isa/amoand_w.cc
+    src/isa/amomax_w.cc
+    src/isa/amomaxu_w.cc
+    src/isa/amomin_w.cc
+    src/isa/amominu_w.cc
+    src/isa/amoor_w.cc
+    src/isa/amoswap_w.cc
+    src/isa/amoxor_w.cc
     src/isa/and.cc
     src/isa/andi.cc
     src/isa/csrrci.cc
@@ -38,6 +47,7 @@ add_library(rviss
     src/isa/ld.cc
     src/isa/lh.cc
     src/isa/lhu.cc
+    src/isa/lr_w.cc
     src/isa/lui.cc
     src/isa/lw.cc
     src/isa/lwu.cc
@@ -54,6 +64,7 @@ add_library(rviss
     src/isa/remw.cc
     src/isa/or.cc
     src/isa/sfence_vma.cc
+    src/isa/sc_w.cc
     src/isa/sll.cc
     src/isa/sllw.cc
     src/isa/slli.cc
