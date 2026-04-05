@@ -207,3 +207,12 @@ TEST_CASE("CSRRWI stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::a7);
     REQUIRE(instruction.imm == 3075);
 }
+
+TEST_CASE("CSRRSI stores opcode and operands") {
+    CSRRSI instruction(Register::s0, Register::s1, 3076);
+
+    REQUIRE(instruction.opcode == Opcode::CSRRSI);
+    REQUIRE(instruction.rd == Register::s0);
+    REQUIRE(instruction.rs1 == Register::s1);
+    REQUIRE(instruction.imm == 3076);
+}

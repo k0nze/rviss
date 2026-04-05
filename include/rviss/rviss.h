@@ -5,6 +5,7 @@
 #include "rviss/isa/andi.h"
 #include "rviss/isa/csrrc.h"
 #include "rviss/isa/csrrs.h"
+#include "rviss/isa/csrrsi.h"
 #include "rviss/isa/csrrwi.h"
 #include "rviss/isa/csrrw.h"
 #include "rviss/isa/ecall.h"
