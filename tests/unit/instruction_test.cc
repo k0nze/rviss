@@ -683,3 +683,102 @@ TEST_CASE("AMOMAXU_W stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::a3);
     REQUIRE(instruction.rs2 == Register::a4);
 }
+
+TEST_CASE("LR_D stores opcode and operands") {
+    LR_D instruction(Register::a5, Register::a6);
+
+    REQUIRE(instruction.opcode == Opcode::LR_D);
+    REQUIRE(instruction.rd == Register::a5);
+    REQUIRE(instruction.rs1 == Register::a6);
+    REQUIRE(instruction.rs2 == Register::zero);
+}
+
+TEST_CASE("SC_D stores opcode and operands") {
+    SC_D instruction(Register::a7, Register::s0, Register::s1);
+
+    REQUIRE(instruction.opcode == Opcode::SC_D);
+    REQUIRE(instruction.rd == Register::a7);
+    REQUIRE(instruction.rs1 == Register::s0);
+    REQUIRE(instruction.rs2 == Register::s1);
+}
+
+TEST_CASE("AMOSWAP_D stores opcode and operands") {
+    AMOSWAP_D instruction(Register::s2, Register::s3, Register::s4);
+
+    REQUIRE(instruction.opcode == Opcode::AMOSWAP_D);
+    REQUIRE(instruction.rd == Register::s2);
+    REQUIRE(instruction.rs1 == Register::s3);
+    REQUIRE(instruction.rs2 == Register::s4);
+}
+
+TEST_CASE("AMOADD_D stores opcode and operands") {
+    AMOADD_D instruction(Register::s5, Register::s6, Register::s7);
+
+    REQUIRE(instruction.opcode == Opcode::AMOADD_D);
+    REQUIRE(instruction.rd == Register::s5);
+    REQUIRE(instruction.rs1 == Register::s6);
+    REQUIRE(instruction.rs2 == Register::s7);
+}
+
+TEST_CASE("AMOXOR_D stores opcode and operands") {
+    AMOXOR_D instruction(Register::s8, Register::s9, Register::s10);
+
+    REQUIRE(instruction.opcode == Opcode::AMOXOR_D);
+    REQUIRE(instruction.rd == Register::s8);
+    REQUIRE(instruction.rs1 == Register::s9);
+    REQUIRE(instruction.rs2 == Register::s10);
+}
+
+TEST_CASE("AMOAND_D stores opcode and operands") {
+    AMOAND_D instruction(Register::s11, Register::t0, Register::t1);
+
+    REQUIRE(instruction.opcode == Opcode::AMOAND_D);
+    REQUIRE(instruction.rd == Register::s11);
+    REQUIRE(instruction.rs1 == Register::t0);
+    REQUIRE(instruction.rs2 == Register::t1);
+}
+
+TEST_CASE("AMOOR_D stores opcode and operands") {
+    AMOOR_D instruction(Register::t2, Register::t3, Register::t4);
+
+    REQUIRE(instruction.opcode == Opcode::AMOOR_D);
+    REQUIRE(instruction.rd == Register::t2);
+    REQUIRE(instruction.rs1 == Register::t3);
+    REQUIRE(instruction.rs2 == Register::t4);
+}
+
+TEST_CASE("AMOMIN_D stores opcode and operands") {
+    AMOMIN_D instruction(Register::t5, Register::t6, Register::a0);
+
+    REQUIRE(instruction.opcode == Opcode::AMOMIN_D);
+    REQUIRE(instruction.rd == Register::t5);
+    REQUIRE(instruction.rs1 == Register::t6);
+    REQUIRE(instruction.rs2 == Register::a0);
+}
+
+TEST_CASE("AMOMAX_D stores opcode and operands") {
+    AMOMAX_D instruction(Register::a1, Register::a2, Register::a3);
+
+    REQUIRE(instruction.opcode == Opcode::AMOMAX_D);
+    REQUIRE(instruction.rd == Register::a1);
+    REQUIRE(instruction.rs1 == Register::a2);
+    REQUIRE(instruction.rs2 == Register::a3);
+}
+
+TEST_CASE("AMOMINU_D stores opcode and operands") {
+    AMOMINU_D instruction(Register::a4, Register::a5, Register::a6);
+
+    REQUIRE(instruction.opcode == Opcode::AMOMINU_D);
+    REQUIRE(instruction.rd == Register::a4);
+    REQUIRE(instruction.rs1 == Register::a5);
+    REQUIRE(instruction.rs2 == Register::a6);
+}
+
+TEST_CASE("AMOMAXU_D stores opcode and operands") {
+    AMOMAXU_D instruction(Register::a7, Register::s0, Register::s1);
+
+    REQUIRE(instruction.opcode == Opcode::AMOMAXU_D);
+    REQUIRE(instruction.rd == Register::a7);
+    REQUIRE(instruction.rs1 == Register::s0);
+    REQUIRE(instruction.rs2 == Register::s1);
+}
