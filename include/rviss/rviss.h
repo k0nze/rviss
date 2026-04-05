@@ -6,6 +6,7 @@
 #include "rviss/isa/instruction.h"
 #include "rviss/isa/instruction_type_i.h"
 #include "rviss/isa/lb.h"
+#include "rviss/isa/ld.h"
 #include "rviss/isa/lh.h"
 #include "rviss/isa/lui.h"
 #include "rviss/isa/lw.h"

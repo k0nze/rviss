@@ -14,6 +14,7 @@ add_library(rviss
     src/isa/instruction.cc
     src/isa/instruction_type_i.cc
     src/isa/lb.cc
+    src/isa/ld.cc
     src/isa/lh.cc
     src/isa/lui.cc
     src/isa/lw.cc
