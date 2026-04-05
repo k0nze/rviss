@@ -4,6 +4,8 @@
 
 This project is intended to build a purely functional RISC-V instruction set simulator in C++ 17 to learn more about RISC-V and eventually be able to boot a Linux kernel while the performance is a secondary goal.
 
+In the first step of the implementation floating point should not be used.
+
 ## Structure
 
 * `src` contains the implementation

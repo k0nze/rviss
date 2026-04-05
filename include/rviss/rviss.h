@@ -1,6 +1,7 @@
 #ifndef RVISS_RVISS_H
 #define RVISS_RVISS_H
 
+#include "rviss/isa/addiw.h"
 #include "rviss/isa/addi.h"
 #include "rviss/isa/andi.h"
 #include "rviss/isa/csrrci.h"
@@ -11,6 +12,8 @@
 #include "rviss/isa/csrrw.h"
 #include "rviss/isa/ecall.h"
 #include "rviss/isa/ebreak.h"
+#include "rviss/isa/fence.h"
+#include "rviss/isa/fence_i.h"
 #include "rviss/isa/instruction.h"
 #include "rviss/isa/instruction_type_i.h"
 #include "rviss/isa/jalr.h"
@@ -22,17 +25,22 @@
 #include "rviss/isa/lui.h"
 #include "rviss/isa/lw.h"
 #include "rviss/isa/lwu.h"
+#include "rviss/isa/mret.h"
 #include "rviss/isa/opcode.h"
 #include "rviss/isa/ori.h"
 #include "rviss/isa/register.h"
+#include "rviss/isa/sfence_vma.h"
 #include "rviss/isa/slli.h"
 #include "rviss/isa/slliw.h"
 #include "rviss/isa/srai.h"
 #include "rviss/isa/sraiw.h"
+#include "rviss/isa/sret.h"
 #include "rviss/isa/slti.h"
 #include "rviss/isa/sltiu.h"
 #include "rviss/isa/srli.h"
 #include "rviss/isa/srliw.h"
+#include "rviss/isa/uret.h"
+#include "rviss/isa/wfi.h"
 #include "rviss/isa/xori.h"
 
 #endif

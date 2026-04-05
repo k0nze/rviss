@@ -11,6 +11,15 @@ TEST_CASE("ADDI stores opcode and operands") {
     REQUIRE(instruction.imm == 123);
 }
 
+TEST_CASE("ADDIW stores opcode and operands") {
+    ADDIW instruction(Register::a2, Register::a3, 234);
+
+    REQUIRE(instruction.opcode == Opcode::ADDIW);
+    REQUIRE(instruction.rd == Register::a2);
+    REQUIRE(instruction.rs1 == Register::a3);
+    REQUIRE(instruction.imm == 234);
+}
+
 TEST_CASE("SLTI stores opcode and operands") {
     SLTI instruction(Register::a2, Register::a3, 456);
 
@@ -172,6 +181,24 @@ TEST_CASE("EBREAK stores opcode") {
     REQUIRE(instruction.imm == 0);
 }
 
+TEST_CASE("FENCE stores opcode and immediate") {
+    FENCE instruction(291);
+
+    REQUIRE(instruction.opcode == Opcode::FENCE);
+    REQUIRE(instruction.rd == Register::zero);
+    REQUIRE(instruction.rs1 == Register::zero);
+    REQUIRE(instruction.imm == 291);
+}
+
+TEST_CASE("FENCE_I stores opcode and fixed fields") {
+    FENCE_I instruction;
+
+    REQUIRE(instruction.opcode == Opcode::FENCE_I);
+    REQUIRE(instruction.rd == Register::zero);
+    REQUIRE(instruction.rs1 == Register::zero);
+    REQUIRE(instruction.imm == 0);
+}
+
 TEST_CASE("CSRRW stores opcode and operands") {
     CSRRW instruction(Register::a0, Register::a1, 3072);
 
@@ -260,4 +287,48 @@ TEST_CASE("SRAIW stores opcode and operands") {
     REQUIRE(instruction.rd == Register::s10);
     REQUIRE(instruction.rs1 == Register::s11);
     REQUIRE(instruction.imm == 14);
+}
+
+TEST_CASE("URET stores opcode and fixed fields") {
+    URET instruction;
+
+    REQUIRE(instruction.opcode == Opcode::URET);
+    REQUIRE(instruction.rd == Register::zero);
+    REQUIRE(instruction.rs1 == Register::zero);
+    REQUIRE(instruction.imm == 2);
+}
+
+TEST_CASE("SRET stores opcode and fixed fields") {
+    SRET instruction;
+
+    REQUIRE(instruction.opcode == Opcode::SRET);
+    REQUIRE(instruction.rd == Register::zero);
+    REQUIRE(instruction.rs1 == Register::zero);
+    REQUIRE(instruction.imm == 258);
+}
+
+TEST_CASE("MRET stores opcode and fixed fields") {
+    MRET instruction;
+
+    REQUIRE(instruction.opcode == Opcode::MRET);
+    REQUIRE(instruction.rd == Register::zero);
+    REQUIRE(instruction.rs1 == Register::zero);
+    REQUIRE(instruction.imm == 770);
+}
+
+TEST_CASE("WFI stores opcode and fixed fields") {
+    WFI instruction;
+
+    REQUIRE(instruction.opcode == Opcode::WFI);
+    REQUIRE(instruction.rd == Register::zero);
+    REQUIRE(instruction.rs1 == Register::zero);
+    REQUIRE(instruction.imm == 261);
+}
+
+TEST_CASE("SFENCE_VMA stores opcode and operands") {
+    SFENCE_VMA instruction(Register::t0, Register::t1);
+
+    REQUIRE(instruction.opcode == Opcode::SFENCE_VMA);
+    REQUIRE(instruction.rs1 == Register::t0);
+    REQUIRE(instruction.rs2 == Register::t1);
 }
