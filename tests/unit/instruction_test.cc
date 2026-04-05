@@ -252,3 +252,12 @@ TEST_CASE("SRLIW stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::s9);
     REQUIRE(instruction.imm == 13);
 }
+
+TEST_CASE("SRAIW stores opcode and operands") {
+    SRAIW instruction(Register::s10, Register::s11, 14);
+
+    REQUIRE(instruction.opcode == Opcode::SRAIW);
+    REQUIRE(instruction.rd == Register::s10);
+    REQUIRE(instruction.rs1 == Register::s11);
+    REQUIRE(instruction.imm == 14);
+}

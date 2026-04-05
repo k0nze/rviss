@@ -28,6 +28,7 @@
 #include "rviss/isa/slli.h"
 #include "rviss/isa/slliw.h"
 #include "rviss/isa/srai.h"
+#include "rviss/isa/sraiw.h"
 #include "rviss/isa/slti.h"
 #include "rviss/isa/sltiu.h"
 #include "rviss/isa/srli.h"
