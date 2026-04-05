@@ -539,3 +539,48 @@ TEST_CASE("REMU stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::s2);
     REQUIRE(instruction.rs2 == Register::s3);
 }
+
+TEST_CASE("MULW stores opcode and operands") {
+    MULW instruction(Register::s4, Register::s5, Register::s6);
+
+    REQUIRE(instruction.opcode == Opcode::MULW);
+    REQUIRE(instruction.rd == Register::s4);
+    REQUIRE(instruction.rs1 == Register::s5);
+    REQUIRE(instruction.rs2 == Register::s6);
+}
+
+TEST_CASE("DIVW stores opcode and operands") {
+    DIVW instruction(Register::s7, Register::s8, Register::s9);
+
+    REQUIRE(instruction.opcode == Opcode::DIVW);
+    REQUIRE(instruction.rd == Register::s7);
+    REQUIRE(instruction.rs1 == Register::s8);
+    REQUIRE(instruction.rs2 == Register::s9);
+}
+
+TEST_CASE("DIVUW stores opcode and operands") {
+    DIVUW instruction(Register::s10, Register::s11, Register::t0);
+
+    REQUIRE(instruction.opcode == Opcode::DIVUW);
+    REQUIRE(instruction.rd == Register::s10);
+    REQUIRE(instruction.rs1 == Register::s11);
+    REQUIRE(instruction.rs2 == Register::t0);
+}
+
+TEST_CASE("REMW stores opcode and operands") {
+    REMW instruction(Register::t1, Register::t2, Register::t3);
+
+    REQUIRE(instruction.opcode == Opcode::REMW);
+    REQUIRE(instruction.rd == Register::t1);
+    REQUIRE(instruction.rs1 == Register::t2);
+    REQUIRE(instruction.rs2 == Register::t3);
+}
+
+TEST_CASE("REMUW stores opcode and operands") {
+    REMUW instruction(Register::t4, Register::t5, Register::t6);
+
+    REQUIRE(instruction.opcode == Opcode::REMUW);
+    REQUIRE(instruction.rd == Register::t4);
+    REQUIRE(instruction.rs1 == Register::t5);
+    REQUIRE(instruction.rs2 == Register::t6);
+}
