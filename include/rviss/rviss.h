@@ -1,6 +1,7 @@
 #ifndef RVISS_RVISS_H
 #define RVISS_RVISS_H
 
+#include "rviss/isa/add.h"
 #include "rviss/isa/addiw.h"
 #include "rviss/isa/addi.h"
 #include "rviss/isa/andi.h"
@@ -16,6 +17,7 @@
 #include "rviss/isa/fence_i.h"
 #include "rviss/isa/instruction.h"
 #include "rviss/isa/instruction_type_i.h"
+#include "rviss/isa/instruction_type_r.h"
 #include "rviss/isa/jalr.h"
 #include "rviss/isa/lb.h"
 #include "rviss/isa/lbu.h"
@@ -37,6 +39,7 @@
 #include "rviss/isa/sret.h"
 #include "rviss/isa/slti.h"
 #include "rviss/isa/sltiu.h"
+#include "rviss/isa/sub.h"
 #include "rviss/isa/srli.h"
 #include "rviss/isa/srliw.h"
 #include "rviss/isa/uret.h"

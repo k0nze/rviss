@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(CTest)
 
 add_library(rviss
+    src/isa/add.cc
     src/isa/addiw.cc
     src/isa/addi.cc
     src/isa/andi.cc
@@ -24,6 +25,7 @@ add_library(rviss
     src/isa/fence_i.cc
     src/isa/instruction.cc
     src/isa/instruction_type_i.cc
+    src/isa/instruction_type_r.cc
     src/isa/jalr.cc
     src/isa/lb.cc
     src/isa/lbu.cc
@@ -43,6 +45,7 @@ add_library(rviss
     src/isa/sret.cc
     src/isa/slti.cc
     src/isa/sltiu.cc
+    src/isa/sub.cc
     src/isa/srli.cc
     src/isa/srliw.cc
     src/isa/uret.cc
