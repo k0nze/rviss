@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+include(CTest)
+
 add_library(rvsim
     src/isa/instruction.cc
 )
@@ -21,3 +23,30 @@ add_executable(main
 target_link_libraries(main
     PRIVATE rvsim
 )
+
+if(BUILD_TESTING)
+    include(FetchContent)
+
+    FetchContent_Declare(
+        Catch2
+        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+        GIT_TAG v3.8.1
+    )
+    FetchContent_MakeAvailable(Catch2)
+
+    list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
+
+    add_executable(rvsim_tests
+        tests/unit/instruction_test.cc
+        tests/unit/register_test.cc
+    )
+
+    target_link_libraries(rvsim_tests
+        PRIVATE
+        rvsim
+        Catch2::Catch2WithMain
+    )
+
+    include(Catch)
+    catch_discover_tests(rvsim_tests)
+endif()

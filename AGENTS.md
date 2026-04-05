@@ -12,6 +12,7 @@ This project is intended to build a purely functional RISC-V instruction set sim
 * `include/rvsim/rvsim.h` is the umbrella header intended for apps
 * `include/rvsim/isa` contains ISA-related public headers
 * `tests` contains the tests
+* `tests/unit` contains Catch2-based unit tests
 * `apps` contains examples of how to use the instruction set simulator
 * `build` contains the build output generated with `cmake` and `ninja`
 
@@ -21,3 +22,13 @@ From the project root:
 
 * `cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON`
 * `cmake --build build`
+
+## Testing
+
+The project uses Catch2 for unit tests and CTest for test execution.
+
+From the project root:
+
+* `cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON`
+* `cmake --build build`
+* `ctest --test-dir build --output-on-failure`

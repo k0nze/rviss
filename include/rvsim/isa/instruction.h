@@ -4,9 +4,9 @@
 #include "rvsim/isa/opcode.h"
 
 class Instruction {
-    public:
-        Instruction(Opcode opcode);
-        Opcode opcode;
+public:
+    Instruction(Opcode opcode);
+    Opcode opcode;
 };
 
 #endif
