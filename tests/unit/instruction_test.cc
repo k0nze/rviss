@@ -180,3 +180,12 @@ TEST_CASE("CSRRW stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::a1);
     REQUIRE(instruction.imm == 3072);
 }
+
+TEST_CASE("CSRRS stores opcode and operands") {
+    CSRRS instruction(Register::a2, Register::a3, 3073);
+
+    REQUIRE(instruction.opcode == Opcode::CSRRS);
+    REQUIRE(instruction.rd == Register::a2);
+    REQUIRE(instruction.rs1 == Register::a3);
+    REQUIRE(instruction.imm == 3073);
+}
