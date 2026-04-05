@@ -31,6 +31,7 @@
 #include "rviss/isa/slti.h"
 #include "rviss/isa/sltiu.h"
 #include "rviss/isa/srli.h"
+#include "rviss/isa/srliw.h"
 #include "rviss/isa/xori.h"
 
 #endif
