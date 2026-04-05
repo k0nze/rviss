@@ -6,5 +6,7 @@
 #include "rvsim/isa/instruction_type_i.h"
 #include "rvsim/isa/opcode.h"
 #include "rvsim/isa/register.h"
+#include "rvsim/isa/slti.h"
+#include "rvsim/isa/sltiu.h"
 
 #endif
