@@ -13,6 +13,7 @@ add_library(rviss
     src/isa/andi.cc
     src/isa/csrrc.cc
     src/isa/csrrs.cc
+    src/isa/csrrwi.cc
     src/isa/csrrw.cc
     src/isa/ecall.cc
     src/isa/ebreak.cc
