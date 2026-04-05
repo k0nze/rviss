@@ -12,6 +12,7 @@ add_library(rviss
     src/isa/addi.cc
     src/isa/andi.cc
     src/isa/ecall.cc
+    src/isa/ebreak.cc
     src/isa/instruction.cc
     src/isa/instruction_type_i.cc
     src/isa/lb.cc

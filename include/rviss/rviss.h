@@ -4,6 +4,7 @@
 #include "rviss/isa/addi.h"
 #include "rviss/isa/andi.h"
 #include "rviss/isa/ecall.h"
+#include "rviss/isa/ebreak.h"
 #include "rviss/isa/instruction.h"
 #include "rviss/isa/instruction_type_i.h"
 #include "rviss/isa/lb.h"

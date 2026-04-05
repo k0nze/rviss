@@ -162,3 +162,12 @@ TEST_CASE("ECALL stores opcode") {
     REQUIRE(instruction.rs1 == Register::zero);
     REQUIRE(instruction.imm == 0);
 }
+
+TEST_CASE("EBREAK stores opcode") {
+    EBREAK instruction;
+
+    REQUIRE(instruction.opcode == Opcode::EBREAK);
+    REQUIRE(instruction.rd == Register::zero);
+    REQUIRE(instruction.rs1 == Register::zero);
+    REQUIRE(instruction.imm == 0);
+}
