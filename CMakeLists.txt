@@ -9,7 +9,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(CTest)
 
 add_library(rvsim
+    src/isa/addi.cc
     src/isa/instruction.cc
+    src/isa/instruction_type_i.cc
 )
 
 target_include_directories(rvsim

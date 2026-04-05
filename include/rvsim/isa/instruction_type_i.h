@@ -3,10 +3,18 @@
 
 #include "rvsim/isa/instruction.h"
 #include "rvsim/isa/opcode.h"
+#include "rvsim/isa/register.h"
+#include <cstdint>
 
 class InstructionTypeI: public Instruction {
 public:
-    InstructionTypeI(Opcode opcode, )
+    virtual ~InstructionTypeI() = 0;
+    Register rd;
+    Register rs1;
+    uint32_t imm;
+
+protected:
+    InstructionTypeI(Opcode opcode, Register rd, Register rs1, uint32_t imm);
 };
 
 #endif

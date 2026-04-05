@@ -5,8 +5,11 @@
 
 class Instruction {
 public:
-    Instruction(Opcode opcode);
+    virtual ~Instruction() = 0;
     Opcode opcode;
+
+protected:
+    Instruction(Opcode opcode);
 };
 
 #endif
