@@ -21,6 +21,7 @@ add_library(rviss
     src/isa/ebreak.cc
     src/isa/instruction.cc
     src/isa/instruction_type_i.cc
+    src/isa/jalr.cc
     src/isa/lb.cc
     src/isa/lbu.cc
     src/isa/ld.cc

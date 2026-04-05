@@ -225,3 +225,12 @@ TEST_CASE("CSRRCI stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::s3);
     REQUIRE(instruction.imm == 3077);
 }
+
+TEST_CASE("JALR stores opcode and operands") {
+    JALR instruction(Register::s4, Register::s5, 204);
+
+    REQUIRE(instruction.opcode == Opcode::JALR);
+    REQUIRE(instruction.rd == Register::s4);
+    REQUIRE(instruction.rs1 == Register::s5);
+    REQUIRE(instruction.imm == 204);
+}
