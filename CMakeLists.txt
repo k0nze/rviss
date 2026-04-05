@@ -12,6 +12,7 @@ add_library(rviss
     src/isa/add.cc
     src/isa/addiw.cc
     src/isa/addi.cc
+    src/isa/and.cc
     src/isa/andi.cc
     src/isa/csrrci.cc
     src/isa/csrrc.cc
@@ -37,19 +38,26 @@ add_library(rviss
     src/isa/lwu.cc
     src/isa/mret.cc
     src/isa/ori.cc
+    src/isa/or.cc
     src/isa/sfence_vma.cc
+    src/isa/sll.cc
     src/isa/slli.cc
     src/isa/slliw.cc
+    src/isa/slt.cc
     src/isa/srai.cc
+    src/isa/sltu.cc
+    src/isa/sra.cc
     src/isa/sraiw.cc
     src/isa/sret.cc
     src/isa/slti.cc
     src/isa/sltiu.cc
     src/isa/sub.cc
+    src/isa/srl.cc
     src/isa/srli.cc
     src/isa/srliw.cc
     src/isa/uret.cc
     src/isa/wfi.cc
+    src/isa/xor.cc
     src/isa/xori.cc
 )
 

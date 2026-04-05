@@ -315,6 +315,78 @@ TEST_CASE("SUB stores opcode and operands") {
     REQUIRE(instruction.rs2 == Register::a1);
 }
 
+TEST_CASE("SLL stores opcode and operands") {
+    SLL instruction(Register::a2, Register::a3, Register::a4);
+
+    REQUIRE(instruction.opcode == Opcode::SLL);
+    REQUIRE(instruction.rd == Register::a2);
+    REQUIRE(instruction.rs1 == Register::a3);
+    REQUIRE(instruction.rs2 == Register::a4);
+}
+
+TEST_CASE("SLT stores opcode and operands") {
+    SLT instruction(Register::a5, Register::a6, Register::a7);
+
+    REQUIRE(instruction.opcode == Opcode::SLT);
+    REQUIRE(instruction.rd == Register::a5);
+    REQUIRE(instruction.rs1 == Register::a6);
+    REQUIRE(instruction.rs2 == Register::a7);
+}
+
+TEST_CASE("SLTU stores opcode and operands") {
+    SLTU instruction(Register::s0, Register::s1, Register::s2);
+
+    REQUIRE(instruction.opcode == Opcode::SLTU);
+    REQUIRE(instruction.rd == Register::s0);
+    REQUIRE(instruction.rs1 == Register::s1);
+    REQUIRE(instruction.rs2 == Register::s2);
+}
+
+TEST_CASE("XOR stores opcode and operands") {
+    XOR instruction(Register::s3, Register::s4, Register::s5);
+
+    REQUIRE(instruction.opcode == Opcode::XOR);
+    REQUIRE(instruction.rd == Register::s3);
+    REQUIRE(instruction.rs1 == Register::s4);
+    REQUIRE(instruction.rs2 == Register::s5);
+}
+
+TEST_CASE("SRL stores opcode and operands") {
+    SRL instruction(Register::s6, Register::s7, Register::s8);
+
+    REQUIRE(instruction.opcode == Opcode::SRL);
+    REQUIRE(instruction.rd == Register::s6);
+    REQUIRE(instruction.rs1 == Register::s7);
+    REQUIRE(instruction.rs2 == Register::s8);
+}
+
+TEST_CASE("SRA stores opcode and operands") {
+    SRA instruction(Register::s9, Register::s10, Register::s11);
+
+    REQUIRE(instruction.opcode == Opcode::SRA);
+    REQUIRE(instruction.rd == Register::s9);
+    REQUIRE(instruction.rs1 == Register::s10);
+    REQUIRE(instruction.rs2 == Register::s11);
+}
+
+TEST_CASE("OR stores opcode and operands") {
+    OR instruction(Register::t0, Register::t1, Register::t2);
+
+    REQUIRE(instruction.opcode == Opcode::OR);
+    REQUIRE(instruction.rd == Register::t0);
+    REQUIRE(instruction.rs1 == Register::t1);
+    REQUIRE(instruction.rs2 == Register::t2);
+}
+
+TEST_CASE("AND stores opcode and operands") {
+    AND instruction(Register::t3, Register::t4, Register::t5);
+
+    REQUIRE(instruction.opcode == Opcode::AND);
+    REQUIRE(instruction.rd == Register::t3);
+    REQUIRE(instruction.rs1 == Register::t4);
+    REQUIRE(instruction.rs2 == Register::t5);
+}
+
 TEST_CASE("ADDIW stores opcode and operands") {
     ADDIW instruction(Register::a2, Register::a3, 234);
 
