@@ -5,6 +5,7 @@
 #include "rvsim/isa/andi.h"
 #include "rvsim/isa/instruction.h"
 #include "rvsim/isa/instruction_type_i.h"
+#include "rvsim/isa/lui.h"
 #include "rvsim/isa/opcode.h"
 #include "rvsim/isa/ori.h"
 #include "rvsim/isa/register.h"

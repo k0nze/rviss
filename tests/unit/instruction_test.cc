@@ -82,3 +82,11 @@ TEST_CASE("SRAI stores opcode and operands") {
     REQUIRE(instruction.rs1 == Register::s9);
     REQUIRE(instruction.imm == 7);
 }
+
+TEST_CASE("LUI stores opcode and operands") {
+    LUI instruction(Register::s10, 1024);
+
+    REQUIRE(instruction.opcode == Opcode::LUI);
+    REQUIRE(instruction.rd == Register::s10);
+    REQUIRE(instruction.imm == 1024);
+}
