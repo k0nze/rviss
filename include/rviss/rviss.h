@@ -3,6 +3,7 @@
 
 #include "rviss/isa/addi.h"
 #include "rviss/isa/andi.h"
+#include "rviss/isa/csrrc.h"
 #include "rviss/isa/csrrs.h"
 #include "rviss/isa/csrrw.h"
 #include "rviss/isa/ecall.h"
