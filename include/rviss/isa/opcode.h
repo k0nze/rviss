@@ -18,7 +18,7 @@ enum class Opcode {
     SRAIW, MUL, MULH, MULHSU, MULHU, DIV, DIVU, REM,
     REMU, MULW, DIVW, DIVUW, REMW, REMUW, ADDW,
     SUBW, SLLW, SRLW, SRAW, LWU,
-    LD, SD
+    LD, SD, C_JR, C_MV, C_EBREAK, C_JALR, C_ADD
 };
 
 #endif
