@@ -1,6 +1,7 @@
 #ifndef RVISS_RVISS_H
 #define RVISS_RVISS_H
 
+#include "rviss/core/decoder.h"
 #include "rviss/isa/add.h"
 #include "rviss/isa/addw.h"
 #include "rviss/isa/addiw.h"

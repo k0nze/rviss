@@ -9,6 +9,23 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(CTest)
 
 add_library(rviss
+    src/core/decode_type_amo.cc
+    src/core/decode_type_b.cc
+    src/core/decode_type_ca.cc
+    src/core/decode_type_cb.cc
+    src/core/decode_type_ci.cc
+    src/core/decode_type_ciw.cc
+    src/core/decode_type_cj.cc
+    src/core/decode_type_cl.cc
+    src/core/decode_type_cr.cc
+    src/core/decode_type_cs.cc
+    src/core/decode_type_css.cc
+    src/core/decode_type_i.cc
+    src/core/decode_type_j.cc
+    src/core/decode_type_r.cc
+    src/core/decode_type_s.cc
+    src/core/decode_type_u.cc
+    src/core/decoder.cc
     src/isa/add.cc
     src/isa/addw.cc
     src/isa/addiw.cc
@@ -185,6 +202,22 @@ if(BUILD_TESTING)
     list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
     add_executable(rviss_tests
+        tests/unit/decode_type_amo_test.cc
+        tests/unit/decode_type_b_test.cc
+        tests/unit/decode_type_ca_test.cc
+        tests/unit/decode_type_cb_test.cc
+        tests/unit/decode_type_ci_test.cc
+        tests/unit/decode_type_ciw_test.cc
+        tests/unit/decode_type_cj_test.cc
+        tests/unit/decode_type_cl_test.cc
+        tests/unit/decode_type_cr_test.cc
+        tests/unit/decode_type_cs_test.cc
+        tests/unit/decode_type_css_test.cc
+        tests/unit/decode_type_i_test.cc
+        tests/unit/decode_type_j_test.cc
+        tests/unit/decode_type_r_test.cc
+        tests/unit/decode_type_s_test.cc
+        tests/unit/decode_type_u_test.cc
         tests/unit/instruction_type_amo_test.cc
         tests/unit/instruction_type_b_test.cc
         tests/unit/instruction_type_ca_test.cc
