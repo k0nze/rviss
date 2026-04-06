@@ -33,6 +33,7 @@ add_library(rviss
     src/isa/amoxor_w.cc
     src/isa/and.cc
     src/isa/andi.cc
+    src/isa/auipc.cc
     src/isa/csrrci.cc
     src/isa/csrrc.cc
     src/isa/csrrs.cc
@@ -48,6 +49,7 @@ add_library(rviss
     src/isa/fence.cc
     src/isa/fence_i.cc
     src/isa/instruction.cc
+    src/isa/instruction_type_amo.cc
     src/isa/instruction_type_i.cc
     src/isa/instruction_type_r.cc
     src/isa/instruction_type_u.cc

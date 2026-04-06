@@ -9,6 +9,7 @@ In the first step of the implementation floating point should not be used.
 ## Structure
 
 * `src` contains the implementation
+* `docs` contains useful information and tracks the project status
 * `include` contains the public headers
 * `include/rviss` contains the public library interface
 * `include/rviss/rviss.h` is the umbrella header intended for apps

@@ -10,6 +10,14 @@ TEST_CASE("LUI stores opcode and operands") {
     REQUIRE(instruction.imm == 1024);
 }
 
+TEST_CASE("AUIPC stores opcode and operands") {
+    AUIPC instruction(Register::s11, 4096);
+
+    REQUIRE(instruction.opcode == Opcode::AUIPC);
+    REQUIRE(instruction.rd == Register::s11);
+    REQUIRE(instruction.imm == 4096);
+}
+
 TEST_CASE("InstructionTypeU-derived instructions store destination and immediate") {
     LUI instruction(Register::a0, 2048);
 
