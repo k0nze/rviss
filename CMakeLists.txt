@@ -57,6 +57,15 @@ add_library(rviss
     src/isa/instruction.cc
     src/isa/instruction_type_amo.cc
     src/isa/instruction_type_b.cc
+    src/isa/instruction_type_ca.cc
+    src/isa/instruction_type_cb.cc
+    src/isa/instruction_type_ci.cc
+    src/isa/instruction_type_ciw.cc
+    src/isa/instruction_type_cj.cc
+    src/isa/instruction_type_cl.cc
+    src/isa/instruction_type_cr.cc
+    src/isa/instruction_type_cs.cc
+    src/isa/instruction_type_css.cc
     src/isa/instruction_type_i.cc
     src/isa/instruction_type_j.cc
     src/isa/instruction_type_r.cc
