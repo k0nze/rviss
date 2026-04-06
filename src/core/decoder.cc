@@ -10,6 +10,8 @@ std::unique_ptr<Instruction> Decoder::decode(uint32_t encoded_instruction) const
     switch (encoded_instruction & 0x7fU) {
     case 0x63U:
         return decode_type_b(encoded_instruction);
+    case 0x2fU:
+        return decode_type_amo(encoded_instruction);
     default:
         return nullptr;
     }
