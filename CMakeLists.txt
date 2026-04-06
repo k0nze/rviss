@@ -50,8 +50,11 @@ add_library(rviss
     src/isa/fence_i.cc
     src/isa/instruction.cc
     src/isa/instruction_type_amo.cc
+    src/isa/instruction_type_b.cc
     src/isa/instruction_type_i.cc
+    src/isa/instruction_type_j.cc
     src/isa/instruction_type_r.cc
+    src/isa/instruction_type_s.cc
     src/isa/instruction_type_u.cc
     src/isa/jalr.cc
     src/isa/lb.cc
@@ -129,8 +132,12 @@ if(BUILD_TESTING)
     list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
     add_executable(rviss_tests
+        tests/unit/instruction_type_amo_test.cc
+        tests/unit/instruction_type_b_test.cc
         tests/unit/instruction_type_i_test.cc
+        tests/unit/instruction_type_j_test.cc
         tests/unit/instruction_type_r_test.cc
+        tests/unit/instruction_type_s_test.cc
         tests/unit/instruction_type_u_test.cc
         tests/unit/register_test.cc
     )
