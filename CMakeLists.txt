@@ -41,10 +41,19 @@ add_library(rviss
     src/isa/bltu.cc
     src/isa/bne.cc
     src/isa/c_add.cc
+    src/isa/c_addi.cc
+    src/isa/c_addi16sp.cc
+    src/isa/c_addiw.cc
     src/isa/c_ebreak.cc
     src/isa/c_jalr.cc
     src/isa/c_jr.cc
+    src/isa/c_ldsp.cc
+    src/isa/c_li.cc
+    src/isa/c_lui.cc
+    src/isa/c_lwsp.cc
     src/isa/c_mv.cc
+    src/isa/c_nop.cc
+    src/isa/c_slli.cc
     src/isa/csrrci.cc
     src/isa/csrrc.cc
     src/isa/csrrs.cc
@@ -158,6 +167,7 @@ if(BUILD_TESTING)
     add_executable(rviss_tests
         tests/unit/instruction_type_amo_test.cc
         tests/unit/instruction_type_b_test.cc
+        tests/unit/instruction_type_ci_test.cc
         tests/unit/instruction_type_cr_test.cc
         tests/unit/instruction_type_i_test.cc
         tests/unit/instruction_type_j_test.cc
