@@ -96,6 +96,7 @@
 #include "rviss/isa/instruction_type_r.h"
 #include "rviss/isa/instruction_type_s.h"
 #include "rviss/isa/instruction_type_u.h"
+#include "rviss/isa/jal.h"
 #include "rviss/isa/jalr.h"
 #include "rviss/isa/lb.h"
 #include "rviss/isa/lbu.h"
