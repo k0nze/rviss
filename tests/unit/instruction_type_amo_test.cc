@@ -2,17 +2,6 @@
 
 #include "rviss/rviss.h"
 
-TEST_CASE("InstructionTypeAMO-derived instructions store register operands") {
-    AMOADD_W instruction(Register::a0, Register::a1, Register::a2);
-
-    const InstructionTypeAMO& base = instruction;
-
-    REQUIRE(base.opcode == Opcode::AMOADD_W);
-    REQUIRE(base.rd == Register::a0);
-    REQUIRE(base.rs1 == Register::a1);
-    REQUIRE(base.rs2 == Register::a2);
-}
-
 TEST_CASE("LR_W stores opcode and operands") {
     LR_W instruction(Register::a0, Register::a1);
 

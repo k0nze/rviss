@@ -34,6 +34,12 @@ add_library(rviss
     src/isa/and.cc
     src/isa/andi.cc
     src/isa/auipc.cc
+    src/isa/beq.cc
+    src/isa/bge.cc
+    src/isa/bgeu.cc
+    src/isa/blt.cc
+    src/isa/bltu.cc
+    src/isa/bne.cc
     src/isa/csrrci.cc
     src/isa/csrrc.cc
     src/isa/csrrs.cc
