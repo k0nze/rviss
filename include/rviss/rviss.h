@@ -34,6 +34,7 @@
 #include "rviss/isa/bne.h"
 #include "rviss/isa/c_add.h"
 #include "rviss/isa/c_addi.h"
+#include "rviss/isa/c_addi4spn.h"
 #include "rviss/isa/c_addi16sp.h"
 #include "rviss/isa/c_addiw.h"
 #include "rviss/isa/c_addw.h"

@@ -42,6 +42,7 @@ add_library(rviss
     src/isa/bne.cc
     src/isa/c_add.cc
     src/isa/c_addi.cc
+    src/isa/c_addi4spn.cc
     src/isa/c_addi16sp.cc
     src/isa/c_addiw.cc
     src/isa/c_addw.cc
@@ -181,6 +182,7 @@ if(BUILD_TESTING)
         tests/unit/instruction_type_ca_test.cc
         tests/unit/instruction_type_cb_test.cc
         tests/unit/instruction_type_ci_test.cc
+        tests/unit/instruction_type_ciw_test.cc
         tests/unit/instruction_type_cr_test.cc
         tests/unit/instruction_type_i_test.cc
         tests/unit/instruction_type_j_test.cc

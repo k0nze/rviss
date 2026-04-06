@@ -22,6 +22,7 @@ enum class Opcode {
     C_NOP, C_ADDI, C_LI, C_LUI, C_ADDI16SP, C_SLLI, C_LWSP, C_ADDIW, C_LDSP,
     C_SUB, C_XOR, C_OR, C_AND, C_SUBW, C_ADDW,
     C_SRLI, C_SRAI, C_ANDI, C_BEQZ, C_BNEZ
+    , C_ADDI4SPN
 };
 
 #endif
