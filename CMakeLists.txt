@@ -86,8 +86,11 @@ add_library(rviss
     src/isa/remw.cc
     src/isa/or.cc
     src/isa/sfence_vma.cc
+    src/isa/sb.cc
     src/isa/sc_d.cc
     src/isa/sc_w.cc
+    src/isa/sd.cc
+    src/isa/sh.cc
     src/isa/sll.cc
     src/isa/sllw.cc
     src/isa/slli.cc
@@ -103,6 +106,7 @@ add_library(rviss
     src/isa/sltiu.cc
     src/isa/sub.cc
     src/isa/subw.cc
+    src/isa/sw.cc
     src/isa/srl.cc
     src/isa/srlw.cc
     src/isa/srli.cc
