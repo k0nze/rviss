@@ -43,6 +43,7 @@
 #include "rviss/isa/c_beqz.h"
 #include "rviss/isa/c_bnez.h"
 #include "rviss/isa/c_ebreak.h"
+#include "rviss/isa/c_j.h"
 #include "rviss/isa/c_jalr.h"
 #include "rviss/isa/c_jr.h"
 #include "rviss/isa/c_ldsp.h"
