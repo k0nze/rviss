@@ -54,9 +54,11 @@ add_library(rviss
     src/isa/c_j.cc
     src/isa/c_jalr.cc
     src/isa/c_jr.cc
+    src/isa/c_ld.cc
     src/isa/c_ldsp.cc
     src/isa/c_li.cc
     src/isa/c_lui.cc
+    src/isa/c_lw.cc
     src/isa/c_lwsp.cc
     src/isa/c_mv.cc
     src/isa/c_nop.cc
@@ -185,6 +187,7 @@ if(BUILD_TESTING)
         tests/unit/instruction_type_ci_test.cc
         tests/unit/instruction_type_ciw_test.cc
         tests/unit/instruction_type_cj_test.cc
+        tests/unit/instruction_type_cl_test.cc
         tests/unit/instruction_type_cr_test.cc
         tests/unit/instruction_type_i_test.cc
         tests/unit/instruction_type_j_test.cc
