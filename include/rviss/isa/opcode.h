@@ -20,6 +20,7 @@ enum class Opcode {
     SUBW, SLLW, SRLW, SRAW, LWU,
     LD, SD, C_JR, C_MV, C_EBREAK, C_JALR, C_ADD,
     C_NOP, C_ADDI, C_LI, C_LUI, C_ADDI16SP, C_SLLI, C_LWSP, C_ADDIW, C_LDSP
+    , C_SUB, C_XOR, C_OR, C_AND, C_SUBW, C_ADDW
 };
 
 #endif
