@@ -30,6 +30,12 @@ std::unique_ptr<Instruction> Decoder::decode(uint32_t encoded_instruction) const
             }
         }
 
+        if (quadrant == 0b00U) {
+            if (funct3 == 0b010U || funct3 == 0b011U) {
+                return decode_type_cl(compressed_instruction);
+            }
+        }
+
         if (quadrant == 0b10U) {
             if (funct3 == 0b000U || funct3 == 0b010U || funct3 == 0b011U) {
                 return decode_type_ci(compressed_instruction);
