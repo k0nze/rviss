@@ -7,7 +7,7 @@ The goal of this project is to connect the `c_emulator` of the fromal RISC-V ISA
 ## Documentation
 
 * Public API comments should use Doxygen-compatible doc strings
-* Prefer documenting declarations in public headers under `include/rviss` instead of repeating the same documentation in source files
+* Prefer documenting declarations in public headers under `include/harbor` instead of repeating the same documentation in source files
 * Document interface contracts and architectural behavior, not implementation trivia
 * Use Doxygen tags such as `@brief`, `@param`, `@return`, and `@note` when they add clarity
 * When a method has architectural constraints or side effects, document them explicitly
