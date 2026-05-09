@@ -76,6 +76,9 @@ std::unique_ptr<Instruction> Decoder::decode(uint32_t encoded_instruction) const
         return decode_type_r(encoded_instruction);
     case 0x23U:
         return decode_type_s(encoded_instruction);
+    case 0x17U:
+    case 0x37U:
+        return decode_type_u(encoded_instruction);
     case 0x63U:
         return decode_type_b(encoded_instruction);
     case 0x2fU:
