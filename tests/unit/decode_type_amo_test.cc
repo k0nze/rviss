@@ -337,5 +337,6 @@ TEST_CASE("Decoder does not decode non-AMO 32-bit opcodes as AMO instructions") 
     Decoder decoder;
     const auto instruction = decoder.decode(0x00000013U);
 
-    REQUIRE(instruction == nullptr);
+    REQUIRE(instruction != nullptr);
+    REQUIRE(dynamic_cast<const InstructionTypeAMO*>(instruction.get()) == nullptr);
 }
