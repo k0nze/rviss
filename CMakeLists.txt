@@ -10,7 +10,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 set(HARBOR_SAIL_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/sail")
 set(HARBOR_SAIL_RISCV_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/sail-riscv")
-set(HARBOR_SAIL_INSTALL_PREFIX "" CACHE PATH "Installation prefix for the Sail compiler built by Harbor")
+set(HARBOR_DEFAULT_SAIL_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/toolchain/sail")
+set(HARBOR_SAIL_INSTALL_PREFIX "${HARBOR_DEFAULT_SAIL_INSTALL_PREFIX}" CACHE PATH "Installation prefix for the Sail compiler built by Harbor")
+
+if(NOT HARBOR_SAIL_INSTALL_PREFIX)
+  set(HARBOR_SAIL_INSTALL_PREFIX "${HARBOR_DEFAULT_SAIL_INSTALL_PREFIX}" CACHE PATH "Installation prefix for the Sail compiler built by Harbor" FORCE)
+endif()
 
 find_program(OPAM_BIN opam)
 
@@ -33,18 +38,10 @@ add_custom_target(harbor_sail_compiler
   VERBATIM
 )
 
-if(HARBOR_SAIL_INSTALL_PREFIX)
-  add_custom_target(harbor_sail_install
-    COMMAND "${OPAM_BIN}" exec -- dune install --prefix "${HARBOR_SAIL_INSTALL_PREFIX}"
-    WORKING_DIRECTORY "${HARBOR_SAIL_SOURCE_DIR}"
-    COMMENT "Installing the Sail compiler to ${HARBOR_SAIL_INSTALL_PREFIX}"
-    VERBATIM
-  )
-  add_dependencies(harbor_sail_install harbor_sail_compiler)
-else()
-  add_custom_target(harbor_sail_install
-    COMMAND "${CMAKE_COMMAND}" -E false
-    COMMENT "Set -DHARBOR_SAIL_INSTALL_PREFIX=<path> before installing the Sail compiler"
-    VERBATIM
-  )
-endif()
+add_custom_target(harbor_sail_install
+  COMMAND "${OPAM_BIN}" exec -- dune install --prefix "${HARBOR_SAIL_INSTALL_PREFIX}"
+  WORKING_DIRECTORY "${HARBOR_SAIL_SOURCE_DIR}"
+  COMMENT "Installing the Sail compiler to ${HARBOR_SAIL_INSTALL_PREFIX}"
+  VERBATIM
+)
+add_dependencies(harbor_sail_install harbor_sail_compiler)

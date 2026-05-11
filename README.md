@@ -34,10 +34,28 @@ eval $(opam env --switch=harbor)
 cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 ```
 
+Optionally set a custom Sail installation prefix:
+
+```bash
+cmake -B build -DHARBOR_SAIL_INSTALL_PREFIX=/path/to/sail-prefix
+```
+
 Build the Sail compiler:
 
 ```bash
 cmake --build build --target harbor_sail_compiler
+```
+
+Install the Sail compiler into Harbor's local toolchain directory:
+
+```bash
+cmake --build build --target harbor_sail_install
+```
+
+Check that the Sail installation was successful:
+
+```bash
+toolchain/sail/bin/sail --version
 ```
 
 ## Helpful links:

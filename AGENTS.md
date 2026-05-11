@@ -2,7 +2,49 @@
 
 ## Project Scope
 
-The goal of this project is to connect the `c_emulator` of the fromal RISC-V ISA definition under `external/sail-riscv` to a SystemC hardware interface. E.g. the `c_emulator` boots a linux kernel and the registers, cache, and memory is provided through SystemC models in this repository.
+The goal of this project is to connect the `c_emulator` of the formal RISC-V ISA definition under `external/sail-riscv` to a SystemC hardware interface. The Sail RISC-V model owns ISA decode, execution semantics, architectural state, privilege behavior, and CSR behavior. Harbor should provide the integration layer around that model.
+
+The intended direction is that the Sail RISC-V `c_emulator` boots a Linux kernel while selected platform resources, peripherals, timing, interrupts, memory, or cache behavior can be provided through SystemC models in this repository.
+
+Do not reintroduce a separate hand-written RISC-V decoder or instruction semantics layer in Harbor unless explicitly requested. The previous standalone instruction-set-simulator direction has been superseded by the Sail RISC-V integration direction.
+
+## External Dependencies
+
+* `external/sail` contains the Sail compiler source dependency
+* `external/sail-riscv` contains the RISC-V formal model and C emulator support code
+* Treat both external directories as upstream dependencies
+* Avoid modifying files inside external submodules unless the task explicitly requires a patch against the upstream project
+* Generated files and build outputs inside external submodules should not be committed unless explicitly intended
+
+## Build
+
+Harbor uses CMake as the top-level build entry point.
+
+* `harbor_sail_compiler` builds the Sail compiler from `external/sail`
+* `harbor_sail_install` installs the Sail compiler into Harbor's local toolchain prefix
+* The default Sail install prefix is `toolchain/sail`
+* `toolchain/` is generated local output and should stay uncommitted
+
+The known working OCaml setup is:
+
+* OCaml `4.14.2`
+* Menhir `20240715`
+* an active opam switch named `harbor`
+
+Follow `README.md` for exact setup commands. Keep the README updated when build requirements change.
+
+## Integration Direction
+
+The next integration milestones are tracked in `docs/sail-riscv-integration-todo.md`.
+
+Prefer this order of work:
+
+* build and install the Sail compiler from Harbor
+* build Sail RISC-V's `riscv_model` from Harbor using the installed Sail compiler
+* add a minimal Harbor wrapper around Sail RISC-V's `ModelImpl`
+* add observation callbacks using Sail RISC-V's `callbacks_if`
+* design and implement the SystemC/MMIO bridge
+* avoid touching the Sail RISC-V platform model until the callback and wrapper path is understood
 
 ## Documentation
 
@@ -11,5 +53,4 @@ The goal of this project is to connect the `c_emulator` of the fromal RISC-V ISA
 * Document interface contracts and architectural behavior, not implementation trivia
 * Use Doxygen tags such as `@brief`, `@param`, `@return`, and `@note` when they add clarity
 * When a method has architectural constraints or side effects, document them explicitly
-
 
