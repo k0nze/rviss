@@ -25,6 +25,8 @@ Harbor uses CMake as the top-level build entry point.
 * `harbor_riscv_model` builds Sail RISC-V's generated model and `riscv_model` library from Harbor
 * `harbor_baremetal_minimal` builds the first Harbor-owned RV64GC bare-metal ELF
 * `harbor_run_baremetal_minimal` builds and runs that ELF with Sail RISC-V's `sail_riscv_sim`
+* `harbor_baremetal_hello` builds the first Harbor-owned C bare-metal ELF
+* `harbor_run_baremetal_hello` builds and runs that C ELF with Sail RISC-V's `sail_riscv_sim`
 * The default Sail install prefix is `toolchain/sail`
 * `toolchain/` is generated local output and should stay uncommitted
 
@@ -47,6 +49,7 @@ Follow `README.md` for exact setup commands. Keep the README updated when build 
 * Keep example programs, linker scripts, and C runtime startup code outside `external/sail-riscv`
 * Prefer CMake targets for reproducible local flows, but document equivalent direct compiler/linker commands when useful for other build systems
 * The minimal bare-metal example exits through Sail RISC-V's HTIF `tohost` mechanism
+* The C bare-metal examples use Harbor's small local runtime instead of hosted libc
 
 ## Integration Direction
 

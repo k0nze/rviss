@@ -121,6 +121,13 @@ cmake --build build --target harbor_baremetal_minimal
 cmake --build build --target harbor_run_baremetal_minimal
 ```
 
+The current C hello example can be built and run with:
+
+```bash
+cmake --build build --target harbor_baremetal_hello
+cmake --build build --target harbor_run_baremetal_hello
+```
+
 ## Helpful links:
 
  * [rv32i/rv64i instructions](https://msyksphinz-self.github.io/riscv-isadoc/html/rvi.html)

@@ -45,3 +45,44 @@ cmake --build build --target harbor_run_baremetal_minimal
 
 The example exits through Sail RISC-V's HTIF `tohost` mechanism. A successful
 run prints `SUCCESS`.
+
+## Hello Example
+
+Build the C hello-world RV64GC ELF:
+
+```bash
+cmake --build build --target harbor_baremetal_hello
+```
+
+Equivalent manual build command:
+
+```bash
+mkdir -p build/examples/baremetal/hello
+riscv64-elf-gcc \
+  -march=rv64gc \
+  -mabi=lp64 \
+  -mcmodel=medany \
+  -ffreestanding \
+  -fno-builtin \
+  -Wall \
+  -Wextra \
+  -nostdlib \
+  -nostartfiles \
+  -Iexamples/baremetal/c_runtime \
+  -Texamples/baremetal/linker/rv64-baremetal.ld \
+  -Wl,--no-relax \
+  -Wl,--no-warn-rwx-segments \
+  -Wl,-Map,build/examples/baremetal/hello/hello.map \
+  -o build/examples/baremetal/hello/hello.elf \
+  examples/baremetal/c_runtime/start.S \
+  examples/baremetal/c_runtime/runtime.c \
+  examples/baremetal/hello/main.c
+```
+
+Run it with Sail RISC-V:
+
+```bash
+cmake --build build --target harbor_run_baremetal_hello
+```
+
+A successful run prints the hello message followed by `SUCCESS`.

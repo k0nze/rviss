@@ -1,12 +1,7 @@
-/*
- * Placeholder for a minimal bare-metal C example.
- *
- * The implementation depends on the C runtime startup code, linker script, and
- * c_emulator exit mechanism.
- */
+#include "runtime.h"
 
 int main(void)
 {
+  printf("Hello from Harbor bare-metal C: %s %d 0x%x\n", "rv64gc", 42, 42);
   return 0;
 }
-

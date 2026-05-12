@@ -1,6 +1,8 @@
 OUTPUT_ARCH("riscv")
 ENTRY(_start)
 
+__STACK_SIZE = 0x2000;
+
 MEMORY
 {
   if_clint (wa) : ORIGIN = 0x02000000, LENGTH = 768K
@@ -11,6 +13,15 @@ MEMORY
 SECTIONS
 {
   . = ORIGIN(if_ram);
+
+  .stack ALIGN(16) (NOLOAD) : {
+    _stack_end = .;
+    . += __STACK_SIZE;
+    . = ALIGN(16);
+    _stack = .;
+  } > if_ram
+
+  __global_pointer$ = .;
 
   .text : {
     *(.text)
@@ -32,8 +43,11 @@ SECTIONS
   } > if_htif
 
   .bss (NOLOAD) : {
+    __bss_start = .;
     *(.bss)
     *(.bss.*)
     *(COMMON)
+    . = ALIGN(8);
+    __bss_end = .;
   } > if_ram
 }
