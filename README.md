@@ -5,7 +5,7 @@
 ### macOS
 
 ```bash
-brew install cmake gmp z3 pkgconf dune opam ocaml
+brew install cmake gmp z3 pkgconf dune opam ocaml riscv64-elf-gcc
 ```
 
 ### General
@@ -68,6 +68,58 @@ cmake --build build --target harbor_riscv_model
 ```
 
 The first build may download Sail RISC-V CMake dependencies into the build tree.
+
+## Use Sail RISC-V Emulator
+
+Build the standalone Sail RISC-V simulator executable:
+
+```bash
+cmake --build build/sail-riscv --target sail_riscv_sim
+```
+
+The executable is generated at:
+
+```bash
+build/sail-riscv/c_emulator/sail_riscv_sim
+```
+
+Check that it runs:
+
+```bash
+build/sail-riscv/c_emulator/sail_riscv_sim --version
+build/sail-riscv/c_emulator/sail_riscv_sim --print-isa-string
+```
+
+List all supported command-line options:
+
+```bash
+build/sail-riscv/c_emulator/sail_riscv_sim --help
+```
+
+Run a RISC-V ELF file:
+
+```bash
+build/sail-riscv/c_emulator/sail_riscv_sim path/to/program.elf
+```
+
+Multiple ELF files can be passed. They are loaded in order, and the program
+counter is set to the entry point of the first ELF.
+
+Useful options while bringing up bare-metal examples:
+
+```bash
+build/sail-riscv/c_emulator/sail_riscv_sim --inst-limit 1000 path/to/program.elf
+build/sail-riscv/c_emulator/sail_riscv_sim --trace-instr --inst-limit 100 path/to/program.elf
+build/sail-riscv/c_emulator/sail_riscv_sim --trace path/to/program.elf
+```
+
+The Harbor-owned bare-metal examples will live under `examples/baremetal`.
+The current minimal example can be built and run with:
+
+```bash
+cmake --build build --target harbor_baremetal_minimal
+cmake --build build --target harbor_run_baremetal_minimal
+```
 
 ## Helpful links:
 

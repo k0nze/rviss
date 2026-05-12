@@ -27,11 +27,11 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 - [ ] Locate the Sail RISC-V `c_emulator` entry point, main execution loop, ELF loading path, and configuration handling.
 - [ ] Document the relevant `c_emulator` command-line options needed for small local experiments.
 - [x] Decide where Harbor-owned bare-metal examples should live, separate from `external/sail-riscv`.
-- [ ] Add a minimal bare-metal RISC-V assembly program that terminates through the mechanism expected by `c_emulator`.
+- [x] Add a minimal bare-metal RISC-V assembly program that terminates through the mechanism expected by `c_emulator`.
 - [ ] Add a minimal bare-metal C program and linker script for the same execution environment.
 - [ ] Add a documented compile flow for the bare-metal examples, including required RISC-V cross-toolchain assumptions.
-- [ ] Add a Harbor CMake target or script that builds the bare-metal examples reproducibly.
-- [ ] Add a Harbor CMake target or script that runs one bare-metal example on the Sail RISC-V `c_emulator`.
+- [x] Add a Harbor CMake target or script that builds the bare-metal examples reproducibly.
+- [x] Add a Harbor CMake target or script that runs one bare-metal example on the Sail RISC-V `c_emulator`.
 - [ ] Record the expected output, exit behavior, and useful debug flags for the first examples.
 
 ## 4. Minimal Harbor Wrapper

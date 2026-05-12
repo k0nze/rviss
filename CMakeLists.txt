@@ -83,3 +83,5 @@ ExternalProject_Add(harbor_sail_riscv
 )
 
 add_custom_target(harbor_riscv_model DEPENDS harbor_sail_riscv)
+
+add_subdirectory(examples/baremetal)
