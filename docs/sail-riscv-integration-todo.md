@@ -34,7 +34,19 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 - [x] Add a Harbor CMake target or script that runs one bare-metal example on the Sail RISC-V `c_emulator`.
 - [x] Record the expected output, exit behavior, and useful debug flags for the first examples.
 
-## 4. Minimal Harbor Wrapper
+## 4. Linux Boot Exploration With Upstream C Emulator
+
+- [ ] Read `external/sail-riscv/os-boot/README.md` and document the expected upstream Linux boot flow.
+- [ ] Identify the required host tools for the Sail RISC-V Linux boot example.
+- [ ] Identify which generated artifacts are needed, such as kernel ELF, device tree blob, initramfs, or firmware image.
+- [ ] Build the upstream Sail RISC-V OS boot example unchanged.
+- [ ] Run the upstream Linux image directly on `sail_riscv_sim` without Harbor wrapper code.
+- [ ] Capture the exact `sail_riscv_sim` command line used for Linux boot.
+- [ ] Record expected console output, approximate runtime, and practical instruction limits.
+- [ ] Document which Sail RISC-V platform devices are used during the boot, such as HTIF and CLINT.
+- [ ] Track Linux boot blockers as they appear.
+
+## 5. Minimal Harbor Wrapper
 
 - [ ] Add a small public Harbor wrapper around Sail RISC-V's `ModelImpl`.
 - [ ] Keep Sail RISC-V implementation details out of Harbor's public API where practical.
@@ -43,7 +55,7 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 - [ ] Add a single-step API that calls the Sail model's step function.
 - [ ] Add tests or a small example that initializes the model and executes a tiny ELF with an instruction limit.
 
-## 5. Callback Observation
+## 6. Callback Observation
 
 - [ ] Implement a Harbor callback class derived from Sail RISC-V's `callbacks_if`.
 - [ ] Observe instruction fetches.
@@ -53,7 +65,7 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 - [ ] Observe traps and interrupts.
 - [ ] Add an example trace callback that proves Harbor can monitor the emulator.
 
-## 6. Platform And MMIO Bridge Design
+## 7. Platform And MMIO Bridge Design
 
 - [ ] Identify the exact Sail RISC-V MMIO dispatch points in `model/sys/platform.sail` and `model/sys/mem.sail`.
 - [ ] Decide which built-in devices should remain in Sail RISC-V initially, such as HTIF and CLINT.
@@ -62,7 +74,7 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 - [ ] Decide how SystemC time and Sail time should be synchronized.
 - [ ] Decide how external interrupt state should be injected into the Sail model.
 
-## 7. External MMIO Hook
+## 8. External MMIO Hook
 
 - [ ] Add the smallest possible Sail RISC-V patch or extension point for external MMIO reads.
 - [ ] Add the smallest possible Sail RISC-V patch or extension point for external MMIO writes.
@@ -71,7 +83,7 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 - [ ] Add tests for successful external MMIO reads and writes.
 - [ ] Add tests for failed external MMIO accesses and expected exception behavior.
 
-## 8. SystemC Integration
+## 9. SystemC Integration
 
 - [ ] Add a SystemC-facing implementation of the Harbor peripheral bus interface.
 - [ ] Map Sail RISC-V physical accesses to SystemC transactions.
@@ -80,9 +92,8 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 - [ ] Add a simple interrupt source from SystemC into the Sail model.
 - [ ] Document the expected threading and scheduling assumptions.
 
-## 9. Linux-Oriented Bring-Up
+## 10. Harbor Linux-Oriented Bring-Up
 
-- [ ] Build the upstream Sail RISC-V OS boot example unchanged.
 - [ ] Run the same image through Harbor's wrapper without SystemC peripherals.
 - [ ] Replace one built-in platform component with a Harbor/SystemC-backed model.
 - [ ] Add device-tree handling for Harbor-provided peripherals.
