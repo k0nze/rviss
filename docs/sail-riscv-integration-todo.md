@@ -24,8 +24,8 @@ into Harbor and eventually connect its platform behavior to SystemC models.
 
 ## 3. C Emulator Familiarization And Bare-Metal Flow
 
-- [ ] Locate the Sail RISC-V `c_emulator` entry point, main execution loop, ELF loading path, and configuration handling.
-- [ ] Document the relevant `c_emulator` command-line options needed for small local experiments.
+- [x] Locate the Sail RISC-V `c_emulator` entry point, main execution loop, ELF loading path, and configuration handling.
+- [x] Document the relevant `c_emulator` command-line options needed for small local experiments.
 - [x] Decide where Harbor-owned bare-metal examples should live, separate from `external/sail-riscv`.
 - [x] Add a minimal bare-metal RISC-V assembly program that terminates through the mechanism expected by `c_emulator`.
 - [x] Add a minimal bare-metal C program and linker script for the same execution environment.
