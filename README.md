@@ -107,3 +107,14 @@ Expected output:
 ```text
 Hello from Harbor RISC-V C on QEMU
 ```
+
+## Integration Checks
+
+Build and run all current RISC-V QEMU examples:
+
+```bash
+tests/integration/run-riscv-examples.sh
+```
+
+The script configures CMake, builds the assembly and C ELFs, and runs both
+examples on QEMU.

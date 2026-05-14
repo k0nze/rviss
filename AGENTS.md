@@ -61,12 +61,26 @@ Do not assume existing Sail targets such as `harbor_sail_compiler`,
 `harbor_riscv_model`, or `sail_riscv_sim` still exist. They belonged to the
 removed prototype.
 
-When adding QEMU/SystemC integration, keep the first build targets small and
-inspectable:
+When adding QEMU/SystemC integration, keep build targets small and inspectable:
 
 * one target to build Harbor libraries,
 * one target to build a minimal example,
-* one target to run a minimal smoke example if practical.
+* run behavior should live in explicit scripts next to the examples or tests,
+  not hidden behind CMake targets.
+
+## Testing
+
+Tests and integration checks are part of every major change. Run the relevant
+checks before considering the task complete, and report any skipped checks with
+the reason.
+
+Current checks:
+
+* `tests/integration/run-riscv-examples.sh` builds and runs the current RISC-V
+  QEMU assembly and C examples.
+
+Use this script for changes that affect CMake, RISC-V examples, QEMU run
+scripts, toolchain detection, linker scripts, or bare-metal runtime code.
 
 ## SystemC/QEMU Integration Guidance
 

@@ -29,6 +29,7 @@ integration.
 - [x] Add a minimal C hello-world program.
 - [x] Add CMake targets to build the bare-metal ELFs.
 - [x] Add scripts to run the bare-metal ELFs on QEMU.
+- [x] Add an integration script that builds and runs the current RISC-V examples.
 - [x] Document equivalent direct compiler and QEMU commands for users of other build systems.
 - [x] Record expected output and exit behavior.
 
