@@ -3,7 +3,7 @@ set -eu
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 docker_cmd="${DOCKER:-docker}"
-image_name="${HARBOR_EXAMPLES_DOCKER_IMAGE:-harbor-examples-builder}"
+image_name="${HARBOR_EXAMPLES_DOCKER_IMAGE:-harbor-examples-builder:latest}"
 riscv_build_volume="${HARBOR_RISCV_BUILD_VOLUME:-harbor-riscv-build}"
 buildroot_source_volume="${HARBOR_BUILDROOT_SOURCE_VOLUME:-harbor-buildroot-source}"
 buildroot_output_volume="${HARBOR_BUILDROOT_OUTPUT_VOLUME:-harbor-buildroot-output}"

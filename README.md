@@ -15,7 +15,7 @@ Build the shared example container once:
 
 ```bash
 docker build \
-  -t harbor-examples-builder \
+  -t harbor-examples-builder:latest \
   -f examples/Dockerfile \
   examples
 ```
@@ -73,15 +73,15 @@ Hello from Harbor RISC-V C on QEMU
 
 ## Integration Checks
 
-Build and run all current RISC-V QEMU examples:
+Build and run all current RISC-V QEMU integration checks:
 
 ```bash
 tests/integration/run-riscv-examples.sh
 ```
 
-The script builds the assembly and C ELFs in Docker and then runs both
-examples on QEMU.
-The host only needs Docker and QEMU for the bare-metal flow.
+The script builds the assembly and C ELFs in Docker, runs both bare-metal
+examples on QEMU, builds the Buildroot Linux baseline, and boots it until Linux
+starts `/init`. The Linux boot log is written to `build/test-logs/`.
 
 ## Buildroot Linux Baseline
 
@@ -98,6 +98,9 @@ examples/linux/buildroot/fetch.sh
 examples/linux/buildroot/build.sh
 examples/linux/buildroot/run.sh
 ```
+
+Terminate QEMU from the terminal with `Ctrl-a x`. Press `Ctrl-a h` in QEMU to
+show the built-in shortcut help.
 
 The fetch and build steps download external sources and can take a while.
 Use the shared Harbor example container for the Buildroot fetch and build

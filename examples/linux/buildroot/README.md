@@ -4,8 +4,9 @@ This example is Harbor's controlled Linux baseline for QEMU. It is intentionally
 kept under `examples/linux` because Buildroot is one bring-up path, not Harbor's
 main build system.
 
-The flow uses a pinned Buildroot release and builds out-of-tree into `build/`.
-Generated downloads, sources, images, and logs are not committed.
+The flow uses a pinned Buildroot release. Downloads, extracted sources, and
+Buildroot's out-of-tree output live in Docker volumes; final boot artifacts are
+copied back into `build/`. Generated files are not committed.
 
 ## Layout
 
@@ -20,23 +21,27 @@ examples/linux/buildroot/
 
 ## Fetch Buildroot
 
+Use the shared Harbor example container documented in the top-level README for
+this step.
+
 ```bash
 examples/linux/buildroot/fetch.sh
 ```
 
-This downloads and extracts Buildroot into `.buildroot/`.
+This downloads and extracts Buildroot into the `harbor-buildroot-source` Docker
+volume.
 
 ## Build The Image
 
-Use a Linux host or Linux container for this step. Native macOS currently
-requires multiple Buildroot-internal workarounds and is not the verified path
-for Harbor's Linux baseline.
+Use the same shared Harbor example container for this step. It provides the
+Buildroot host tools and the RISC-V bare-metal toolchain in one image.
 
 ```bash
 examples/linux/buildroot/build.sh
 ```
 
-This configures Buildroot with `riscv64_qemu_virt_defconfig` and builds into:
+This configures Buildroot with `riscv64_qemu_virt_defconfig` and builds inside
+the `harbor-buildroot-output` Docker volume. Final artifacts are copied to:
 
 ```text
 build/buildroot/riscv64-qemu-virt
@@ -70,8 +75,10 @@ Expected boot milestones:
 The scripts support these environment overrides:
 
 - `BUILDROOT_VERSION`: Buildroot version to fetch.
-- `BUILDROOT_SOURCE_DIR`: existing Buildroot source tree.
-- `BUILDROOT_OUTPUT_DIR`: out-of-tree Buildroot output directory.
+- `BUILDROOT_SOURCE_DIR`: existing Buildroot source tree inside the container.
+- `BUILDROOT_OUTPUT_DIR`: host directory where final artifacts are copied.
+- `HARBOR_BUILDROOT_SOURCE_VOLUME`: Docker volume for downloads and sources.
+- `HARBOR_BUILDROOT_OUTPUT_VOLUME`: Docker volume for Buildroot output.
 - `QEMU`: QEMU executable, defaults to `qemu-system-riscv64`.
 - `MAKE`: GNU Make executable, defaults to `make`.
 - `HOSTCC` and `HOSTCXX`: host compilers used by Buildroot.

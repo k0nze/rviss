@@ -22,5 +22,5 @@ examples/linux/
 ```
 
 Use this directory for small scripts and documentation only. Large generated
-artifacts belong under `build/`, `.buildroot/`, `images/`, or another ignored
+artifacts belong under `build/`, Docker volumes, `images/`, or another ignored
 output directory.

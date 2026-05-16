@@ -77,7 +77,7 @@ The image is prepared explicitly by the user or CI:
 
 ```bash
 docker build \
-  -t harbor-examples-builder \
+  -t harbor-examples-builder:latest \
   -f examples/Dockerfile \
   examples
 ```
@@ -115,7 +115,8 @@ Current checks:
 
 * `tests/integration/run-riscv-examples.sh` builds the current RISC-V QEMU
   assembly and C examples through their Docker-based per-example build scripts,
-  then runs them on host QEMU.
+  runs them on host QEMU, builds the Buildroot Linux baseline, and boots Linux
+  until `/init` starts.
 * `tests/cleanup.sh` removes generated build artifacts, downloaded Buildroot
   sources, and the prepared example builder image.
 
@@ -123,8 +124,8 @@ Use this script for changes that affect CMake, RISC-V examples, QEMU run
 scripts, toolchain detection, linker scripts, or bare-metal runtime code.
 
 The integration script expects the shared example Docker image to exist. If a
-change affects cross-compilation tooling, run the documented `docker build`
-command first, then run `tests/integration/run-riscv-examples.sh`.
+change affects cross-compilation tooling or Linux bring-up, run the documented
+`docker build` command first, then run `tests/integration/run-riscv-examples.sh`.
 
 ## SystemC/QEMU Integration Guidance
 

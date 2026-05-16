@@ -11,7 +11,7 @@ else
   host_build_dir="${repo_root}/build/riscv"
 fi
 docker_cmd="${DOCKER:-docker}"
-image_name="${HARBOR_EXAMPLES_DOCKER_IMAGE:-harbor-examples-builder}"
+image_name="${HARBOR_EXAMPLES_DOCKER_IMAGE:-harbor-examples-builder:latest}"
 build_volume="${HARBOR_RISCV_BUILD_VOLUME:-harbor-riscv-build}"
 
 if ! command -v "${docker_cmd}" >/dev/null 2>&1; then

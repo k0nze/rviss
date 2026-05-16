@@ -2,17 +2,78 @@
 set -eu
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/../../.." && pwd)
+docker_cmd="${DOCKER:-docker}"
+image_name="${HARBOR_EXAMPLES_DOCKER_IMAGE:-harbor-examples-builder:latest}"
+source_volume="${HARBOR_BUILDROOT_SOURCE_VOLUME:-harbor-buildroot-source}"
+output_volume="${HARBOR_BUILDROOT_OUTPUT_VOLUME:-harbor-buildroot-output}"
+in_container="${HARBOR_IN_DOCKER:-0}"
+
+if [ -n "${BUILDROOT_OUTPUT_DIR:-}" ]; then
+  case "${BUILDROOT_OUTPUT_DIR}" in
+    /*) host_output_dir="${BUILDROOT_OUTPUT_DIR}" ;;
+    *) host_output_dir="${repo_root}/${BUILDROOT_OUTPUT_DIR}" ;;
+  esac
+else
+  host_output_dir="${repo_root}/build/buildroot/riscv64-qemu-virt"
+fi
+
+if [ "${in_container}" != "1" ]; then
+  if ! command -v "${docker_cmd}" >/dev/null 2>&1; then
+    echo "Docker executable not found: ${docker_cmd}" >&2
+    exit 1
+  fi
+
+  if ! "${docker_cmd}" info >/dev/null 2>&1; then
+    echo "Docker daemon is not reachable. Start Docker Desktop and try again." >&2
+    exit 1
+  fi
+
+  if ! "${docker_cmd}" image inspect "${image_name}" >/dev/null 2>&1; then
+    echo "Missing Docker image: ${image_name}" >&2
+    echo "Build it first with the command documented in README.md." >&2
+    exit 1
+  fi
+
+  mkdir -p "${host_output_dir}"
+
+  # Keep Buildroot sources and output in Docker volumes. Only final images are
+  # copied back to the host build directory.
+  "${docker_cmd}" run --rm \
+    -v "${source_volume}:/buildroot-source" \
+    -v "${output_volume}:/buildroot-output" \
+    "${image_name}" \
+    sh -c "mkdir -p /buildroot-source /buildroot-output && chown -R $(id -u):$(id -g) /buildroot-source /buildroot-output"
+
+  "${docker_cmd}" run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "${repo_root}:/work:ro" \
+    -v "${source_volume}:/buildroot-source" \
+    -v "${output_volume}:/buildroot-output" \
+    -v "${host_output_dir}:/host-buildroot" \
+    -w /work \
+    -e HARBOR_IN_DOCKER=1 \
+    -e BUILDROOT_VERSION="${BUILDROOT_VERSION:-}" \
+    -e BUILDROOT_SOURCE_DIR="${BUILDROOT_SOURCE_DIR:-}" \
+    -e MAKE \
+    -e HOSTCC \
+    -e HOSTCXX \
+    -e BASH \
+    "${image_name}" \
+    sh /work/examples/linux/buildroot/build.sh
+
+  exit $?
+fi
 
 # Use the same pinned Buildroot version as fetch.sh unless the user overrides it.
 version="${BUILDROOT_VERSION:-$(cat "${repo_root}/examples/linux/buildroot/buildroot.version")}"
 
 # Buildroot supports out-of-tree builds; keep all generated files under build/.
-source_dir="${BUILDROOT_SOURCE_DIR:-${repo_root}/.buildroot/buildroot-${version}}"
-output_dir="${BUILDROOT_OUTPUT_DIR:-${repo_root}/build/buildroot/riscv64-qemu-virt}"
+source_dir="${BUILDROOT_SOURCE_DIR:-/buildroot-source/buildroot-${version}}"
+output_dir="/buildroot-output/riscv64-qemu-virt"
 defconfig="${repo_root}/examples/linux/buildroot/riscv64_qemu_virt_defconfig"
 
-# Tool setup is handled by the top-level README. These overrides are useful if
-# a user wants a non-default GNU Make or host compiler.
+# Tool setup is handled by the shared example container. These overrides are
+# useful if a user wants a non-default GNU Make or host compiler inside it.
 make_cmd="${MAKE:-make}"
 hostcc="${HOSTCC:-gcc}"
 hostcxx="${HOSTCXX:-g++}"
@@ -72,5 +133,8 @@ fi
 
 # Then build the kernel, toolchain, BusyBox userspace, and root filesystem.
 "${make_cmd}" -C "${source_dir}" O="${output_dir}" HOSTCC="${hostcc}" HOSTCXX="${hostcxx}" BASH="${bash_cmd}" AUTORECONF="${autoreconf_cmd}"
+
+mkdir -p /host-buildroot/images
+cp "${output_dir}/images/Image" "${output_dir}/images/rootfs.cpio" /host-buildroot/images/
 
 echo "Buildroot output: ${output_dir}"
