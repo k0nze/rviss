@@ -30,6 +30,7 @@ integration.
 - [x] Add CMake targets to build the bare-metal ELFs.
 - [x] Add scripts to run the bare-metal ELFs on QEMU.
 - [x] Add an integration script that builds and runs the current RISC-V examples.
+- [x] Add a full integration script that also builds and boots the Buildroot Linux baseline.
 - [x] Document equivalent direct compiler and QEMU commands for users of other build systems.
 - [x] Record expected output and exit behavior.
 
@@ -46,10 +47,10 @@ integration.
 - [x] Use Buildroot as the first controlled Linux image source.
 - [x] Document the host tools needed to build Buildroot images.
 - [x] Add a reproducible flow to obtain or build a minimal RV64 Buildroot image.
-- [ ] Build a small kernel, BusyBox userspace, and initramfs or root filesystem.
+- [x] Build a small kernel, BusyBox userspace, and initramfs or root filesystem.
 - [x] Add a QEMU command that boots the Buildroot image to a console.
-- [ ] Add a shorter smoke boot command for quick validation.
-- [ ] Record the expected boot log milestones, including OpenSBI, kernel start, rootfs mount, and shell or init.
+- [x] Add a shorter Linux boot command for quick validation.
+- [x] Record the expected boot log milestones, including OpenSBI, kernel start, rootfs mount, and shell or init.
 - [ ] Add a small userspace test program that can later access a Harbor-provided MMIO device.
 - [x] Document cleanup rules for generated images and downloads.
 

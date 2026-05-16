@@ -33,7 +33,7 @@ Build the example ELFs in Docker:
 examples/riscv/minimal/build.sh
 ```
 
-This smoke example is implemented in assembly only. The shared Docker image
+This minimal example is implemented in assembly only. The shared Docker image
 provides the RISC-V cross compiler and CMake/Ninja build tooling.
 
 Run it on QEMU:
@@ -73,15 +73,31 @@ Hello from Harbor RISC-V C on QEMU
 
 ## Integration Checks
 
-Build and run all current RISC-V QEMU integration checks:
+Build and run the bare-metal RISC-V QEMU example checks:
 
 ```bash
 tests/integration/run-riscv-examples.sh
 ```
 
-The script builds the assembly and C ELFs in Docker, runs both bare-metal
-examples on QEMU, builds the Buildroot Linux baseline, and boots it until Linux
-starts `/init`. The Linux boot log is written to `build/test-logs/`.
+The script builds the assembly and C ELFs in Docker, then runs both bare-metal
+examples on QEMU.
+
+Build and run all current integration checks, including the Buildroot Linux
+baseline:
+
+```bash
+tests/integration/run-all.sh
+```
+
+The full integration script builds the bare-metal examples, builds the
+Buildroot Linux baseline, and boots it until Linux starts `/init`. The Linux
+boot log is written to `build/test-logs/`.
+
+To run only the Linux boot check against existing Buildroot artifacts:
+
+```bash
+tests/integration/boot-buildroot-linux.sh
+```
 
 ## Buildroot Linux Baseline
 

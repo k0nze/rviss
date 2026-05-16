@@ -4,9 +4,9 @@ Harbor starts with QEMU's RISC-V `virt` machine because it is the standard
 generic QEMU platform for RISC-V software bring-up. It supports bare-metal
 programs, OpenSBI, Linux, virtio devices, and generated device trees.
 
-## Current Smoke Command
+## Current Minimal Command
 
-The current bare-metal smoke target runs:
+The current bare-metal minimal example runs:
 
 ```bash
 qemu-system-riscv64 \
@@ -16,17 +16,17 @@ qemu-system-riscv64 \
   -kernel build/examples/riscv/minimal/riscv-minimal.elf
 ```
 
-`-bios none` is intentional for the bare-metal smoke test. QEMU loads the ELF
+`-bios none` is intentional for the bare-metal example. QEMU loads the ELF
 directly and starts at its entry point without firmware.
 
-## Machine Assumptions Used By The Smoke Example
+## Machine Assumptions Used By The Minimal Example
 
 - RAM starts at `0x80000000`.
 - The 16550-compatible UART is available at `0x10000000`.
 - The QEMU RISC-V test finisher is available at `0x100000`.
 - Writing `0x5555` to the test finisher exits QEMU successfully.
 
-These addresses are used only by the current RISC-V `virt` smoke example. They
+These addresses are used only by the current RISC-V `virt` minimal example. They
 must not become generic Harbor/SystemC interface assumptions.
 
 ## Linux Boot Direction
@@ -52,4 +52,3 @@ Harbor's generic SystemC/TLM interfaces should not depend on the RISC-V `virt`
 memory map. The QEMU RISC-V adapter is responsible for translating `virt`
 machine details into Harbor-owned transaction, interrupt, reset, and timing
 interfaces.
-

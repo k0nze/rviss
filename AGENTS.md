@@ -115,17 +115,23 @@ Current checks:
 
 * `tests/integration/run-riscv-examples.sh` builds the current RISC-V QEMU
   assembly and C examples through their Docker-based per-example build scripts,
-  runs them on host QEMU, builds the Buildroot Linux baseline, and boots Linux
-  until `/init` starts.
+  then runs them on host QEMU.
+* `tests/integration/run-all.sh` runs the complete current integration suite:
+  the RISC-V bare-metal examples, the Buildroot Linux build, and the Linux boot
+  check.
+* `tests/integration/boot-buildroot-linux.sh` boots existing Buildroot
+  artifacts until Linux starts `/init`, then terminates QEMU.
 * `tests/cleanup.sh` removes generated build artifacts, downloaded Buildroot
   sources, and the prepared example builder image.
 
-Use this script for changes that affect CMake, RISC-V examples, QEMU run
-scripts, toolchain detection, linker scripts, or bare-metal runtime code.
+Use `tests/integration/run-riscv-examples.sh` for changes that affect CMake,
+RISC-V examples, QEMU run scripts, toolchain detection, linker scripts, or
+bare-metal runtime code.
 
 The integration script expects the shared example Docker image to exist. If a
 change affects cross-compilation tooling or Linux bring-up, run the documented
-`docker build` command first, then run `tests/integration/run-riscv-examples.sh`.
+`docker build` command first, then run the relevant integration script. Use
+`tests/integration/run-all.sh` for full regression coverage.
 
 ## SystemC/QEMU Integration Guidance
 
