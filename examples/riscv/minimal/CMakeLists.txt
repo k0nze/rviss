@@ -1,7 +1,11 @@
-find_program(HARBOR_RISCV_GCC riscv64-elf-gcc)
+find_program(HARBOR_RISCV_GCC
+  NAMES
+    riscv64-elf-gcc
+    riscv64-unknown-elf-gcc
+)
 
 if(NOT HARBOR_RISCV_GCC)
-  message(FATAL_ERROR "riscv64-elf-gcc not found. Install it with Homebrew: brew install riscv64-elf-gcc")
+  message(FATAL_ERROR "RISC-V bare-metal GCC not found. Use the Docker-based build scripts under examples/riscv/*/build.sh or install a riscv64 bare-metal toolchain locally.")
 endif()
 
 message(STATUS "Found RISC-V bare-metal GCC: ${HARBOR_RISCV_GCC}")

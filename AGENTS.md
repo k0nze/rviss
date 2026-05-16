@@ -68,6 +68,39 @@ When adding QEMU/SystemC integration, keep build targets small and inspectable:
 * run behavior should live in explicit scripts next to the examples or tests,
   not hidden behind CMake targets.
 
+## Docker-Based Cross Compilation
+
+Cross compilation for guest artifacts should use the shared example builder
+image defined by `examples/Dockerfile`.
+
+The image is prepared explicitly by the user or CI:
+
+```bash
+docker build \
+  -t harbor-examples-builder \
+  -f examples/Dockerfile \
+  examples
+```
+
+Do not make per-example build scripts create or update this image implicitly.
+Those scripts should assume the prepared image exists and fail with a clear
+message when it does not.
+
+Use `HARBOR_EXAMPLES_DOCKER_IMAGE` when a workflow needs a different image tag.
+
+Keep host and container responsibilities separate:
+
+* Docker builds target artifacts such as RISC-V bare-metal ELFs and Buildroot
+  Linux images.
+* The host runs QEMU and other interactive or integration processes.
+* Harbor core libraries should remain buildable on the host unless the project
+  explicitly decides otherwise.
+
+For RISC-V bare-metal examples, each example target should have its own build
+script next to the example, such as `examples/riscv/minimal/build.sh` and
+`examples/riscv/hello/build.sh`. Avoid reintroducing a single aggregate
+`examples/riscv/build.sh` for all targets.
+
 ## Testing
 
 Tests and integration checks are part of every major change. Run the relevant
@@ -76,11 +109,18 @@ the reason.
 
 Current checks:
 
-* `tests/integration/run-riscv-examples.sh` builds and runs the current RISC-V
-  QEMU assembly and C examples.
+* `tests/integration/run-riscv-examples.sh` builds the current RISC-V QEMU
+  assembly and C examples through their Docker-based per-example build scripts,
+  then runs them on host QEMU.
+* `tests/cleanup.sh` removes generated build artifacts, downloaded Buildroot
+  sources, and the prepared example builder image.
 
 Use this script for changes that affect CMake, RISC-V examples, QEMU run
 scripts, toolchain detection, linker scripts, or bare-metal runtime code.
+
+The integration script expects the shared example Docker image to exist. If a
+change affects cross-compilation tooling, run the documented `docker build`
+command first, then run `tests/integration/run-riscv-examples.sh`.
 
 ## SystemC/QEMU Integration Guidance
 

@@ -5,70 +5,34 @@
 ### macOS
 
 ```bash
-brew install \
-  cmake \
-  ninja \
-  qemu \
-  systemc \
-  riscv64-elf-gcc \
-  bash \
-  gcc@12 \
-  coreutils \
-  dtc \
-  findutils \
-  gpatch \
-  util-linux \
-  make \
-  gnu-tar \
-  curl \
-  xz
+brew install qemu
+brew install --cask docker
 ```
 
-Use Homebrew's GNU tools before the default macOS tools:
+Start Docker Desktop before building the examples.
+
+Build the shared example container once:
 
 ```bash
-export PATH="$(brew --prefix make)/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix bash)/bin:$PATH"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix gpatch)/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix util-linux)/bin:$PATH"
-export PATH="$(brew --prefix util-linux)/libexec/gnubin:$PATH"
+docker build \
+  -t harbor-examples-builder \
+  -f examples/Dockerfile \
+  examples
 ```
+
+All cross-compilation scripts use this image by default. Override it with
+`HARBOR_EXAMPLES_DOCKER_IMAGE` if you build the image under a different tag.
 
 ## RISC-V Assembly Bare-Metal Example
 
-Configure Harbor:
+Build the example ELFs in Docker:
 
 ```bash
-cmake -B build -G Ninja
+examples/riscv/minimal/build.sh
 ```
 
-This smoke example is implemented in assembly only. It does not compile any C
-source code. The build still uses `riscv64-elf-gcc` as the assembler/linker
-driver for the guest ELF.
-
-Build the RISC-V assembly ELF:
-
-```bash
-cmake --build build --target harbor_riscv_assembly
-```
-
-Equivalent direct compile command:
-
-```bash
-riscv64-elf-gcc \
-  -march=rv64imac \
-  -mabi=lp64 \
-  -nostdlib \
-  -nostartfiles \
-  -Texamples/riscv/minimal/linker.ld \
-  -Wl,--no-relax \
-  -Wl,--no-warn-rwx-segments \
-  -Wl,-Map,build/examples/riscv/minimal/riscv-minimal.map \
-  -o build/examples/riscv/minimal/riscv-minimal.elf \
-  examples/riscv/minimal/start.S
-```
+This smoke example is implemented in assembly only. The shared Docker image
+provides the RISC-V cross compiler and CMake/Ninja build tooling.
 
 Run it on QEMU:
 
@@ -84,35 +48,14 @@ Hello from Harbor RISC-V bare metal on QEMU
 
 ## RISC-V C Bare-Metal Example
 
-Build the RISC-V C hello ELF:
+Build the example ELFs in Docker:
 
 ```bash
-cmake --build build --target harbor_riscv_c
+examples/riscv/hello/build.sh
 ```
 
-Equivalent direct compile command:
-
-```bash
-riscv64-elf-gcc \
-  -march=rv64imac \
-  -mabi=lp64 \
-  -mcmodel=medany \
-  -ffreestanding \
-  -fno-builtin \
-  -Wall \
-  -Wextra \
-  -nostdlib \
-  -nostartfiles \
-  -Iexamples/riscv/common \
-  -Texamples/riscv/minimal/linker.ld \
-  -Wl,--no-relax \
-  -Wl,--no-warn-rwx-segments \
-  -Wl,-Map,build/examples/riscv/minimal/riscv-hello.map \
-  -o build/examples/riscv/minimal/riscv-hello.elf \
-  examples/riscv/common/start.S \
-  examples/riscv/common/runtime.c \
-  examples/riscv/hello/main.c
-```
+The shared Docker image provides the RISC-V cross compiler and CMake/Ninja
+build tooling.
 
 Run it on QEMU:
 
@@ -134,8 +77,9 @@ Build and run all current RISC-V QEMU examples:
 tests/integration/run-riscv-examples.sh
 ```
 
-The script configures CMake, builds the assembly and C ELFs, and runs both
+The script builds the assembly and C ELFs in Docker and then runs both
 examples on QEMU.
+The host only needs Docker and QEMU for the bare-metal flow.
 
 ## Buildroot Linux Baseline
 
@@ -154,6 +98,6 @@ examples/linux/buildroot/run.sh
 ```
 
 The fetch and build steps download external sources and can take a while.
-Use a Linux host or Linux container for the Buildroot build. Native macOS is
-useful for the QEMU bare-metal examples, but Buildroot 2025.02 still assumes
-Linux host conventions in parts of its autotools package flow.
+Use the shared Harbor example container for the Buildroot build. Native macOS
+is still useful for QEMU execution, but the build itself now runs inside the
+container.
