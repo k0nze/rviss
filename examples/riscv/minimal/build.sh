@@ -34,11 +34,13 @@ mkdir -p "${host_build_dir}"
 
 # Keep CMake's write-heavy build tree in a Docker volume, then copy the ELF
 # and map file back to the host build directory for the run script.
+echo "[riscv-minimal] Preparing Docker build volume"
 "${docker_cmd}" run --rm \
   -v "${build_volume}:/docker-build" \
   "${image_name}" \
   sh -c "mkdir -p /docker-build/riscv && chown -R $(id -u):$(id -g) /docker-build"
 
+echo "[riscv-minimal] Building in Docker image ${image_name}"
 "${docker_cmd}" run --rm \
   -u "$(id -u):$(id -g)" \
   -v "${repo_root}:/work:ro" \

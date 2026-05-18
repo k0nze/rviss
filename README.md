@@ -90,8 +90,10 @@ tests/integration/run-all.sh
 ```
 
 The full integration script builds the bare-metal examples, builds the
-Buildroot Linux baseline, and boots it until Linux starts `/init`. The Linux
-boot log is written to `build/test-logs/`.
+Buildroot Linux baseline, verifies that `mmio-test` is present in the root
+filesystem, and boots Linux until `/init` starts, `eth0` receives a DHCP lease,
+and the guest executes `mmio-test --dry-run 0x10010000`. The Linux boot log is
+written to `build/test-logs/`.
 
 To run only the Linux boot check against existing Buildroot artifacts:
 
@@ -127,3 +129,14 @@ write-heavy source and output trees.
 The Buildroot image expects guest networking. The QEMU run script attaches a
 virtio network device backed by QEMU user-mode networking, and Buildroot brings
 up `eth0` with DHCP during boot.
+
+The image also installs `mmio-test`, a small userspace utility that will be used
+to validate future Harbor-provided MMIO devices from inside Linux:
+
+```sh
+mmio-test --help
+mmio-test --dry-run 0x10010000
+```
+
+During the integration boot check, the image runs that dry-run automatically
+from `/etc/init.d/S90mmio-test`.

@@ -51,7 +51,7 @@ integration.
 - [x] Add a QEMU command that boots the Buildroot image to a console.
 - [x] Add a shorter Linux boot command for quick validation.
 - [x] Record the expected boot log milestones, including OpenSBI, kernel start, rootfs mount, and shell or init.
-- [ ] Add a small userspace test program that can later access a Harbor-provided MMIO device.
+- [x] Add a small userspace test program that can later access a Harbor-provided MMIO device.
 - [x] Document cleanup rules for generated images and downloads.
 
 ## 6. Linux Phase 2: Real Distro Evaluation

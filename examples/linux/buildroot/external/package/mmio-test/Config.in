@@ -1,0 +1,5 @@
+config BR2_PACKAGE_MMIO_TEST
+	bool "mmio-test"
+	help
+	  Build a small Linux userspace utility for reading and writing
+	  physical MMIO addresses through /dev/mem.

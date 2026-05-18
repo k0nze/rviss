@@ -120,7 +120,9 @@ Current checks:
   the RISC-V bare-metal examples, the Buildroot Linux build, and the Linux boot
   check.
 * `tests/integration/boot-buildroot-linux.sh` boots existing Buildroot
-  artifacts until Linux starts `/init`, then terminates QEMU.
+  artifacts, verifies that the root filesystem contains `mmio-test`, waits
+  until Linux starts `/init`, `eth0` receives a DHCP lease, and the guest runs
+  `mmio-test --dry-run 0x10010000`, then terminates QEMU.
 * `tests/cleanup.sh` removes generated build artifacts, downloaded Buildroot
   sources, and the prepared example builder image.
 

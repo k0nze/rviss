@@ -3,8 +3,16 @@ set -eu
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
 
+echo "[integration] Running RISC-V bare-metal examples"
 "${repo_root}/tests/integration/run-riscv-examples.sh"
 
+echo "[integration] Fetching Buildroot sources"
 "${repo_root}/examples/linux/buildroot/fetch.sh"
+
+echo "[integration] Building Buildroot Linux image"
 "${repo_root}/examples/linux/buildroot/build.sh"
+
+echo "[integration] Booting Buildroot Linux image"
 "${repo_root}/tests/integration/boot-buildroot-linux.sh"
+
+echo "[integration] All integration checks passed"

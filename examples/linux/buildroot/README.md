@@ -14,10 +14,15 @@ copied back into `build/`. Generated files are not committed.
 examples/linux/buildroot/
   buildroot.version
   riscv64_qemu_virt_defconfig
+  external/
   fetch.sh
   build.sh
   run.sh
 ```
+
+The `external/` directory is a Harbor-owned Buildroot external tree. It carries
+packages that should be installed into the test image without modifying
+Buildroot itself.
 
 ## Fetch Buildroot
 
@@ -72,6 +77,31 @@ Expected boot milestones:
 - The initramfs is unpacked as the root filesystem.
 - `eth0` is configured through QEMU user-mode DHCP.
 - BusyBox init starts and provides the baseline userspace.
+
+## MMIO Test Utility
+
+The image installs `mmio-test`, a small userspace utility for future validation
+of Harbor-provided MMIO devices. It can parse and dry-run a physical MMIO
+access before a device exists:
+
+```sh
+mmio-test --help
+mmio-test --dry-run 0x10010000
+```
+
+The package also installs `/etc/init.d/S90mmio-test`, which runs the dry-run
+during boot. The integration test checks for this output on the serial console.
+
+Once a QEMU/SystemC MMIO device is available, the same utility can be used from
+inside the guest:
+
+```sh
+mmio-test read 0x10010000
+mmio-test write 0x10010000 0x12345678
+```
+
+The default access width is 32 bits. Pass `8`, `16`, `32`, or `64` as the final
+argument to select a different width.
 
 ## Overrides
 

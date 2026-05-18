@@ -38,12 +38,14 @@ if [ "${in_container}" != "1" ]; then
 
   # Keep Buildroot sources and output in Docker volumes. Only final images are
   # copied back to the host build directory.
+  echo "[buildroot] Preparing Docker volumes"
   "${docker_cmd}" run --rm \
     -v "${source_volume}:/buildroot-source" \
     -v "${output_volume}:/buildroot-output" \
     "${image_name}" \
     sh -c "mkdir -p /buildroot-source /buildroot-output && chown -R $(id -u):$(id -g) /buildroot-source /buildroot-output"
 
+  echo "[buildroot] Building in Docker image ${image_name}"
   "${docker_cmd}" run --rm \
     -u "$(id -u):$(id -g)" \
     -v "${repo_root}:/work:ro" \
@@ -71,6 +73,7 @@ version="${BUILDROOT_VERSION:-$(cat "${repo_root}/examples/linux/buildroot/build
 source_dir="${BUILDROOT_SOURCE_DIR:-/buildroot-source/buildroot-${version}}"
 output_dir="/buildroot-output/riscv64-qemu-virt"
 defconfig="${repo_root}/examples/linux/buildroot/riscv64_qemu_virt_defconfig"
+external_dir="${repo_root}/examples/linux/buildroot/external"
 
 # Tool setup is handled by the shared example container. These overrides are
 # useful if a user wants a non-default GNU Make or host compiler inside it.
@@ -128,12 +131,15 @@ if ! command -v flock >/dev/null 2>&1; then
   exit 1
 fi
 
+echo "[buildroot] Configuring Buildroot"
 # First materialize the Harbor-owned defconfig into Buildroot's output .config.
-"${make_cmd}" -C "${source_dir}" O="${output_dir}" BR2_DEFCONFIG="${defconfig}" HOSTCC="${hostcc}" HOSTCXX="${hostcxx}" BASH="${bash_cmd}" AUTORECONF="${autoreconf_cmd}" defconfig
+"${make_cmd}" -C "${source_dir}" O="${output_dir}" BR2_EXTERNAL="${external_dir}" BR2_DEFCONFIG="${defconfig}" HOSTCC="${hostcc}" HOSTCXX="${hostcxx}" BASH="${bash_cmd}" AUTORECONF="${autoreconf_cmd}" defconfig
 
+echo "[buildroot] Building kernel, rootfs, and userspace"
 # Then build the kernel, toolchain, BusyBox userspace, and root filesystem.
-"${make_cmd}" -C "${source_dir}" O="${output_dir}" HOSTCC="${hostcc}" HOSTCXX="${hostcxx}" BASH="${bash_cmd}" AUTORECONF="${autoreconf_cmd}"
+"${make_cmd}" -C "${source_dir}" O="${output_dir}" BR2_EXTERNAL="${external_dir}" HOSTCC="${hostcc}" HOSTCXX="${hostcxx}" BASH="${bash_cmd}" AUTORECONF="${autoreconf_cmd}"
 
+echo "[buildroot] Copying final images to host output directory"
 mkdir -p /host-buildroot/images
 cp "${output_dir}/images/Image" "${output_dir}/images/rootfs.cpio" /host-buildroot/images/
 
